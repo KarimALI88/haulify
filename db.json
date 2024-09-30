@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "ali",
+      "email": "ali@gmail.com",
+      "password": "1234",
+      "role": "user",
+      "gender": "male",
+      "phone": "01111111111",
+      "country": "Egypt"
+    }
+  ],
+  "products": [
+    {
+      "title": "world",
+      "description": "hello world ",
+      "price": 100,
+      "offers": "30%",
+      "rate": 4,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large", "x-large"],
+      "count": 500
+    }
+  ],
+  "cart": [],
+  "wishlist": []
+}
