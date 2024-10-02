@@ -14,24 +14,24 @@ import NotFound from './pages/UserLayout/not-found/NotFound'
 const AdminLayout = () => {
   return (
     <div>
-      <AdminSideBar />
+      
       <Routes>
-        <Route path="/products" element={<ViewProducts/>}/>
-        <Route path="/create-product" element={<CreateProduct/>}/>
-        <Route path="/update-product/:id" element={<UpdateProduct/>}/>
+        <Route path="/products" element={<ViewProducts />} />
+        <Route path="/create-product" element={<CreateProduct />} />
+        <Route path="/update-product/:id" element={<UpdateProduct />} />
         {/* =========================================================================== */}
-        <Route path="/admins" element={<ViewAdmins/>}/>
-        <Route path="/create-admin" element={<CreateAdmin/>}/>
-        <Route path="/update-admin/:id" element={<UpdateAdmin/>}/>
+        <Route path="/admins" element={<ViewAdmins />} />
+        <Route path="/admins/create-admin" element={<CreateAdmin />} />
+        <Route path="/admins/update-admin/:id" element={<UpdateAdmin />} />
         {/* =========================================================================== */}
-        <Route path="/" element={<Dashboard/>}/>
+        <Route path="/" element={<Dashboard />} />
         {/* =========================================================================== */}
-        <Route path="/users" element={<ViewUsers/>}/>
+        <Route path="/users" element={<ViewUsers />} />
         {/* =========================================================================== */}
-        <Route path='/*' element={<NotFound/>} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
-  )
+  );
 }
 
 export default AdminLayout
