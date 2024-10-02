@@ -13,7 +13,7 @@ import NotFound from './pages/UserLayout/not-found/NotFound'
 
 const AdminLayout = () => {
   return (
-    <div>
+    <div className='flex m-7 gap-7 justify-between items-start'>
       <AdminSideBar />
       <Routes>
         <Route path="/products" element={<ViewProducts/>}/>
