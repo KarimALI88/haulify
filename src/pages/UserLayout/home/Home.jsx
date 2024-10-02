@@ -88,15 +88,15 @@ const Home = () => {
         </div>
       </div>
       {/* ========================================================================================= */}
-      <div className="w-[90%] mx-auto my-10 rounded-2xl bg-[#F0F0F0] p-10 ">
+      <div className="w-[90%] mx-auto my-10 rounded-2xl bg-[#F0F0F0] p-10 shadow-sm">
         <h2 className="my-10 text-center font-bold text-5xl">
           BROWSE BY DRESS STYLE
         </h2>
-        <div className="flex gap-5">
-          <div className="lg:w-[40%] sm:w-[100%] cursor-pointer hover:rotate-12 ease-in-out duration-1000">
+        <div className="flex gap-5 flex-wrap">
+          <div className="w-full sm:w-[35%] cursor-pointer hover:rotate-12 ease-in-out duration-1000">
             <CategoryCard name={"Men"} image={menCategory} />
           </div>
-          <div className="lg:w-[60%] sm:w-[100%] cursor-pointer hover:-rotate-12 ease-in-out duration-1000">
+          <div className="w-full sm:w-[60%] cursor-pointer hover:-rotate-12 ease-in-out duration-1000">
             <CategoryCard name={"Women"} image={womenCategory} />
           </div>
         </div>

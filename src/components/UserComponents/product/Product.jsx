@@ -3,7 +3,7 @@ import ReactStars from "react-stars";
 
 const Product = ({ image, name, rate, price }) => {
   return (
-    <div className="w-[250px] rounded-lg mx-auto my-5">
+    <div className="w-[260px] rounded-lg mx-auto my-5">
       <div className="mb-5">
         <img src={image} alt={name} className="w-[100%] h-[280px] rounded-xl shadow-xl" />
       </div>
