@@ -9,6 +9,88 @@
       "gender": "male",
       "phone": "01111111111",
       "country": "Egypt"
+    },
+    {
+      "username": "amr@gmail.com",
+      "password": "123456789",
+      "name": "amr@gmail.com",
+      "gender": "fake",
+      "id": 2
+    },
+    {
+      "username": "amr@gmail.com",
+      "password": "123456789",
+      "name": "amr@gmail.com",
+      "gender": "fake",
+      "id": 3
+    },
+    {
+      "username": "amr@gmail.com",
+      "password": "123456789",
+      "name": "amr@gmail.com",
+      "gender": "fake",
+      "id": 4
+    },
+    {
+      "username": "amr@gmail.com",
+      "password": "123456789",
+      "name": "amr@gmail.com",
+      "gender": "fake",
+      "id": 5
+    },
+    {
+      "username": "amr@gmail.com",
+      "password": "123456789",
+      "name": "amr@gmail.com",
+      "gender": "fake",
+      "id": 6
+    },
+    {
+      "username": "amr@gmail.com",
+      "password": "123456789",
+      "name": "amr@gmail.com",
+      "gender": "fake",
+      "id": 7
+    },
+    {
+      "username": "amr@gmail.com",
+      "password": "123456789",
+      "name": "amr@gmail.com",
+      "gender": "fake",
+      "id": 8
+    },
+    {
+      "username": "kareem@gmail.com",
+      "password": "123456789",
+      "name": "kareem@gmail.com",
+      "gender": "fake",
+      "id": 9
+    },
+    {
+      "name": "amr@gmail.com",
+      "password": "12345",
+      "gender": "",
+      "id": 10
+    },
+    {
+      "name": "fsjdfl@sadfmf",
+      "password": "fsdfsdf",
+      "id": 11
+    },
+    {
+      "name": "sobhimohamed@gmail.com",
+      "password": "123456",
+      "id": 12
+    },
+    {
+      "name": "dsf@fsdf",
+      "password": "sdfsdf",
+      "id": 13
+    },
+    {
+      "name": "asd@fsdf",
+      "password": "4654",
+      "id": 14
     }
   ],
   "products": [
@@ -19,7 +101,12 @@
       "offers": "30%",
       "rate": 4,
       "image": "https://placehold.co/300",
-      "size": ["small", "medium", "large", "x-large"],
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "x-large"
+      ],
       "count": 500
     }
   ],
