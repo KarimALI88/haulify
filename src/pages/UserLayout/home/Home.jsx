@@ -7,6 +7,7 @@ import CategoryCard from "../../../components/UserComponents/category/CategoryCa
 import menCategory from "../../../assets/menCategory.png";
 import womenCategory from "../../../assets/women.png";
 const Home = () => {
+  
   const [newArrivals, setNewArrivals] = useState([
     {
       name: "T-Shirt",
