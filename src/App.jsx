@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
  import { Route, Routes } from 'react-router-dom';
 import UserLayout from './UserLayout';
 import AdminLayout from './AdminLayout';
+
 const App = () => {
   const [theme, setTheme] = useState("light")
 
@@ -18,11 +19,14 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/*" element={<UserLayout theme = {theme} setTheme= {setTheme} />} /> 
-      <Route path="/admin/*" element={<AdminLayout />}/> 
       
+      <Route
+        path="/*"
+        element={<UserLayout theme={theme} setTheme={setTheme} />}
+      />
+      <Route path="/admin/*" element={<AdminLayout />} />
     </Routes>
-  )
+  );
 }
 
 export default App
