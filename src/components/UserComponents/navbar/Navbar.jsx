@@ -63,7 +63,7 @@ const Header = ({ theme, setTheme }) => {
             to="/"
             className="mr-4 cursor-pointer py-1.5 font-medium  text-darkMode dark:text-[white]"
           >
-            Haulifyyy
+            Haulify
           </Typography>
           <div className="mx-auto hidden lg:block">{navList}</div>
           <div className="flex items-center gap-4">
