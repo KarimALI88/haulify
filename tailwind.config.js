@@ -18,6 +18,9 @@ module.exports = withMT({
       colors:{
         mainColor:'#FF8F00',
         darkMode:'#3C3D37',
+      },
+      backgroundImage: {
+        'header': "url('./src/assets/Rectangle 2.png')",
       }
     },
   },
