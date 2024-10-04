@@ -95,19 +95,19 @@
   ],
   "products": [
     {
-      "title": "world",
-      "description": "hello world ",
-      "price": 100,
-      "offers": "30%",
-      "rate": 4,
+      "title": "tfdg",
+      "rate": 5,
+      "cateigory": "men",
+      "price": 446,
+      "count": 65,
+      "description": "gfdg",
       "image": "https://placehold.co/300",
+      "offers": "21",
       "size": [
         "small",
-        "medium",
-        "large",
-        "x-large"
+        "medium"
       ],
-      "count": 500
+      "id": 2
     }
   ],
   "cart": [],

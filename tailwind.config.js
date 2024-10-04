@@ -12,7 +12,7 @@ module.exports = withMT({
   theme: {
     extend: {
       boxShadow: {
-        custom: '6px -1px 8px -3px #000',
+        custom: '0px 0px 21px -7px #000',
         shadowNav: '0px -1px 8px 0px #FF8F00',
       },
       colors:{
