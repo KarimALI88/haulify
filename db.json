@@ -95,19 +95,20 @@
   ],
   "products": [
     {
-      "title": "tfdg",
+      "title": "tshirt-1",
       "rate": 5,
       "cateigory": "men",
-      "price": 446,
-      "count": 65,
-      "description": "gfdg",
+      "price": 200,
+      "count": 50,
+      "description": "fantastic",
       "image": "https://placehold.co/300",
-      "offers": "21",
+      "offers": "30%",
       "size": [
         "small",
-        "medium"
+        "medium",
+        "large"
       ],
-      "id": 2
+      "id": 3
     }
   ],
   "cart": [],
