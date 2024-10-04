@@ -95,19 +95,20 @@
   ],
   "products": [
     {
-      "title": "shoes ",
+      "title": "tshirt-1",
       "rate": 5,
-      "cateigory": "women",
-      "price": 231,
-      "count": 32,
-      "description": "nice",
+      "cateigory": "men",
+      "price": 200,
+      "count": 50,
+      "description": "fantastic",
       "image": "https://placehold.co/300",
-      "offers": "50",
+      "offers": "30%",
       "size": [
         "small",
+        "medium",
         "large"
       ],
-      "id": 2
+      "id": 3
     }
   ],
   "cart": [],
