@@ -95,17 +95,17 @@
   ],
   "products": [
     {
-      "title": "tfdg",
+      "title": "shoes ",
       "rate": 5,
-      "cateigory": "men",
-      "price": 446,
-      "count": 65,
-      "description": "gfdg",
+      "cateigory": "women",
+      "price": 231,
+      "count": 32,
+      "description": "nice",
       "image": "https://placehold.co/300",
-      "offers": "21",
+      "offers": "50",
       "size": [
         "small",
-        "medium"
+        "large"
       ],
       "id": 2
     }
