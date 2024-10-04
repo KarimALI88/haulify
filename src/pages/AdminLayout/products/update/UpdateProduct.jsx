@@ -1,36 +1,54 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Input, Textarea, Button } from "@material-tailwind/react";
+import {
+    Input,
+    Textarea,
+    Button,
+    Checkbox,
+    Select,
+    Option,
+} from "@material-tailwind/react";
 const UpdateProduct = () => {
+    const [size, setSize] = useState([]);
     const [product, setProduct] = useState({
         title: "",
-        description: "",
-        price: 0,
-        offers: "",
         rate: 0,
-        image: "",
-        size: [],
+        cateigory: "",
+        price: 0,
         count: 0,
+        description: "",
+        image: "",
+        offers: "",
+        size: [],
     });
     const navigate = useNavigate();
     const myproduct = useParams().id;
+    const handleCheckboxChange = (value) => {
+        setSize((prevSize) => {
+            if (prevSize.includes(value)) {
+                return prevSize.filter((item) => item !== value);
+            } else {
+                return [...prevSize, value];
+            }
+        });
+    };
     useEffect(() => {
         axios({
             method: "get",
             url: `http://localhost:3000/products/${myproduct}`,
         }).then(({ data }) => {
             setProduct(data);
+            setSize(data.size);
+            
         });
     }, []);
     const handleFrom = (e) => {
         e.preventDefault();
-        console.log(product);
-        
         axios({
             method: "put",
             url: `http://localhost:3000/products/${product.id}`,
-            data: product,
+            data: {...product,size:size},
         }).then(() => {
             navigate(-1);
         });
@@ -57,6 +75,21 @@ const UpdateProduct = () => {
                                 })
                             }
                         />
+                    </div>
+                    <div className="w-[100%]">
+                        <Select
+                            label="Cateigory"
+                            value={product.cateigory}
+                            onChange={(e) =>
+                                setProduct({
+                                    ...product,
+                                    cateigory: e,
+                                })
+                            }                        >
+                            <Option value="men">Men</Option>
+                            <Option value="women">Women</Option>
+                            <Option value="children">Children</Option>
+                        </Select>
                     </div>
                     <div className="w-[100%]">
                         <Input
@@ -122,7 +155,7 @@ const UpdateProduct = () => {
                             }
                         />
                     </div>
-                    <div className="md:w-[48%] w-[100%]">
+                    <div className="md:w-[35%] w-[100%]">
                         <Input
                             label="Offers"
                             value={product?.offers}
@@ -134,18 +167,44 @@ const UpdateProduct = () => {
                             }
                         />
                     </div>
-                    <div className="md:w-[48%] w-[100%]">
-                        <Input
-                            label="Size"
-                            value={product?.size}
-                            onChange={(e) =>
-                                setProduct({ ...product, size: e.target.value })
-                            }
+                    <div className="md:w-[60%] w-[100%]">
+                        <Checkbox
+                            label="Small"
+                            value={"small"}
+                            checked={size.includes('small')}
+                            onChange={() => {
+                                handleCheckboxChange("small");
+                            }}
+                        />
+                        <Checkbox
+                            label="Medium"
+                            value={"medium"}
+                            checked={size.includes('medium')}
+
+                            onChange={() => {
+                                handleCheckboxChange("medium");
+                            }}
+                        />
+                        <Checkbox
+                            label="Large"
+                            value={"large"}
+                            checked={size.includes('large')}
+
+                            onChange={() => {
+                                handleCheckboxChange("large");
+                            }}
+                        />
+                        <Checkbox
+                            label="X-large"
+                            value={"x-large"}
+                            checked={size.includes('x-large')}
+                            onChange={() => {
+                                handleCheckboxChange("x-large");
+                            }}
                         />
                     </div>
                 </div>
-                <div  className="flex justify-center mt-8">
-
+                <div className="flex justify-center mt-8">
                     <Button type="submit">Save</Button>
                 </div>
             </form>

@@ -13,89 +13,19 @@
   ],
   "products": [
     {
-      "id": 2,
-      "title": "wooow",
-      "description": "hello world ",
-      "price": "555",
-      "offers": "30%",
-      "rate": 4,
+      "title": "tfdg",
+      "rate": 5,
+      "cateigory": "men",
+      "price": 446,
+      "count": 65,
+      "description": "gfdg",
       "image": "https://placehold.co/300",
-      "size": [
-        "small",
-        "medium",
-        "large",
-        "x-large"
-      ],
-      "count": 500
-    },
-    {
-      "title": "sobhi mohamed",
-      "rate": 444,
-      "price": 1234,
-      "count": 666,
-      "description": "my name is sobhi mohamed",
-      "image": "https://placehold.co/300",
-      "offers": "30%",
-      "size": "small,medium",
-      "id": 3
-    },
-    {
-      "title": "ali",
-      "rate": "6",
-      "price": "222",
-      "count": "333",
-      "description": "saf",
-      "image": "https://placehold.co/300",
-      "offers": "30%",
-      "size": [
-        "small",
-        "medium",
-        "large",
-        "x-large"
-      ],
-      "id": 4
-    },
-    {
-      "title": "amr",
-      "rate": 99,
-      "price": 444,
-      "count": 6556,
-      "description": "asdf\\fs",
-      "image": "https://placehold.co/300",
-      "offers": "50%",
+      "offers": "21",
       "size": [
         "small",
         "medium"
       ],
-      "id": 5
-    },
-    {
-      "title": "world",
-      "rate": 3,
-      "price": 123,
-      "count": 700,
-      "description": "amr",
-      "image": "https://placehold.co/300",
-      "offers": "60%",
-      "size": [
-        "small",
-        "x-large"
-      ],
-      "id": 6
-    },
-    {
-      "title": "amer",
-      "rate": 22,
-      "price": 666,
-      "count": 777,
-      "description": "adsfaf",
-      "image": "https://placehold.co/300",
-      "offers": "50%",
-      "size": [
-        "large",
-        "x-large"
-      ],
-      "id": 7
+      "id": 2
     }
   ],
   "cart": [],

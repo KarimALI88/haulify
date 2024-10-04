@@ -10,12 +10,12 @@ import {
     Button,
 } from "@material-tailwind/react";
 import axios from "axios";
-const Product = ({ title, image, price,id }) => {
+const Product = ({ title, image, price,id , }) => {
     const deleteProduct = (id) => {
         const SwalButtons = Swal.mixin({
             customClass: {
                 confirmButton:
-                    "bg-green-700 text-white p-3 rounded-md text-[1.3rem] ml-5",
+                    "bg-mainColor text-white p-3 rounded-md text-[1.3rem] ml-5",
                 cancelButton:
                     "bg-red-700 text-white p-3 rounded-md text-[1.3rem] ",
             },
