@@ -12,6 +12,7 @@
       "country": "Egypt"
     },
     {
+      "id": 2,
       "username": "sobhimohamed58",
       "name": "Sobhi Mohamed",
       "email": "sobhimohamed@haulify.eg",
@@ -19,10 +20,10 @@
       "password": "01159363432",
       "country": "Egypt",
       "phone": "01159363432",
-      "role": "admin",
-      "id": 3
+      "role": "admin"
     },
     {
+      "id": 3,
       "username": "toqaashraf02",
       "name": "Toqa Ashraf",
       "email": "toqaashraf@haulify.eg",
@@ -30,10 +31,10 @@
       "password": "01159363432",
       "country": "Egypt",
       "phone": "01159363432",
-      "role": "admin",
-      "id": 5
+      "role": "admin"
     },
     {
+      "id": 4,
       "username": "amryasser_",
       "name": "Amr Yasser",
       "email": "amryasser@haulify.eg",
@@ -41,10 +42,10 @@
       "password": "01159363432",
       "country": "Egypt",
       "phone": "01159363432",
-      "role": "admin",
-      "id": 6
+      "role": "admin"
     },
     {
+      "id": 5,
       "username": "osama875",
       "name": "Osama Wafy",
       "email": "osamawafy@haulify.eg",
@@ -52,10 +53,10 @@
       "password": "01159363432",
       "country": "Egypt",
       "phone": "01159363432",
-      "role": "admin",
-      "id": 7
+      "role": "admin"
     },
     {
+      "id": 6,
       "username": "nahlarashad8",
       "name": "Nahla Rashad",
       "email": "nahlarashad@gmail.com",
@@ -63,25 +64,25 @@
       "password": "01159363432",
       "country": "Egypt",
       "phone": "01159363432",
-      "role": "user",
-      "id": 8
+      "role": "user"
     }
   ],
   "products": [
     {
-      "title": "world",
-      "description": "hello world ",
-      "price": 100,
-      "offers": "30%",
-      "rate": 4,
+      "title": "tshirt-1",
+      "rate": 5,
+      "category": "men",
+      "price": 200,
+      "count": 500,
+      "description": "fantastic",
       "image": "https://placehold.co/300",
+      "offers": "30%",
       "size": [
         "small",
         "medium",
         "large",
         "x-large"
-      ],
-      "count": 500
+      ]
     }
   ],
   "cart": [],

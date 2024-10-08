@@ -56,7 +56,7 @@ const Header = ({ theme, setTheme }) => {
 
   return (
     <div className="max-h-[768px] max-w-full">
-      <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none dark:bg-darkMode border-b border-t-0 border-r-0 border-l-0 border-b-[#adadad]">
+      <Navbar className="sticky top-0 z-10 h-max py-5 max-w-full rounded-none dark:bg-darkMode border-b border-t-0 border-r-0 border-l-0 border-b-[#adadad] shadow-none">
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as={Link}

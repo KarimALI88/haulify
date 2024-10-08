@@ -1,15 +1,15 @@
-import React from 'react'
-import AdminSideBar from './components/AdminComponents/sidebar/AdminSideBar'
-import { Route, Routes } from 'react-router-dom'
-import ViewProducts from './pages/AdminLayout/products/view/ViewProducts'
-import CreateProduct from './pages/AdminLayout/products/create/CreateProduct'
-import UpdateProduct from './pages/AdminLayout/products/update/UpdateProduct'
-import ViewAdmins from './pages/AdminLayout/admins/view/ViewAdmins'
-import CreateAdmin from './pages/AdminLayout/admins/create/CreateAdmin';
-import UpdateAdmin from './pages/AdminLayout/admins/update/UpdateAdmin'
-import Dashboard from './pages/AdminLayout/dashboard/Dashboard'
-import ViewUsers from './pages/AdminLayout/users/ViewUsers'
-import NotFound from './pages/UserLayout/not-found/NotFound'
+import React from "react";
+import AdminSideBar from "./components/AdminComponents/sidebar/AdminSideBar";
+import { Route, Routes } from "react-router-dom";
+import ViewProducts from "./pages/AdminLayout/products/view/ViewProducts";
+import CreateProduct from "./pages/AdminLayout/products/create/CreateProduct";
+import UpdateProduct from "./pages/AdminLayout/products/update/UpdateProduct";
+import ViewAdmins from "./pages/AdminLayout/admins/view/ViewAdmins";
+import CreateAdmin from "./pages/AdminLayout/admins/create/CreateAdmin";
+import UpdateAdmin from "./pages/AdminLayout/admins/update/UpdateAdmin";
+import Dashboard from "./pages/AdminLayout/dashboard/Dashboard";
+import ViewUsers from "./pages/AdminLayout/users/ViewUsers";
+import NotFound from "./pages/UserLayout/not-found/NotFound";
 
 const AdminLayout = () => {
   return (
@@ -34,6 +34,6 @@ const AdminLayout = () => {
       </Routes>
     </div>
   );
-}
+};
 
-export default AdminLayout
+export default AdminLayout;
