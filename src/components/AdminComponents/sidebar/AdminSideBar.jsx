@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { Link } from "react-router-dom";
 import {
   Typography,
   List,
   ListItem,
   ListItemPrefix,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import { RxHamburgerMenu, RxDashboard } from "react-icons/rx";
 import { UserCircleIcon, PowerIcon } from "@heroicons/react/24/solid";
 import {
   MdAdminPanelSettings,
   MdProductionQuantityLimits,
 } from "react-icons/md";
 import { ImUsers } from "react-icons/im";
+
 const AdminSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,7 +25,8 @@ const AdminSidebar = () => {
     <div className="flex">
       {/* Sidebar */}
       <div className="hidden lg:flex flex-col w-[20rem] rounded-lg text-white h-[94vh] min-w-[15rem] p-4 shadow-[1px_1px_6px_6px_rgba(0,0,0,0.3)] m-5 z-10 bg-gradient-to-r from-darkMode via-gray-800 to-darkMode">
-        <Typography variant="h5" color="white">
+        <Typography variant="h5" color="white" className="flex items-center gap-2">
+          <RxDashboard />
           Dashboard
         </Typography>
 

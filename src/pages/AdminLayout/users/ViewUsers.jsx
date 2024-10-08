@@ -7,7 +7,6 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaSearch } from "react-icons/fa"; 
 import { CiLogin } from "react-icons/ci";
 import Swal from "sweetalert2";
-import AdminSideBar from "../../../components/AdminComponents/sidebar/AdminSideBar";
 
 const ViewUsers = () => {
   const [userInfo, setUserInfo] = useState([]);
@@ -79,13 +78,9 @@ const ViewUsers = () => {
   // _____________________________________________________________________
 
   return (
-    <div className="bg-[#EDEEF2] flex flex-col md:flex-row w-full h-screen">
-      <div className="w-full md:w-1/4">
-        <AdminSideBar />
-      </div>
-
-      <div className="w-full flex md:flex-col flex-col">
-        <div className=" w-[97%] h-[10%] bg-white mt-5 ml-5 rounded-lg flex md:flex-row  justify-evenly items-center">
+    
+      <div className="w-full flex md:flex-col flex-col m-2">
+        <div className="h-[10%] bg-white shadow-[1px_1px_6px_6px_rgba(0,0,0,0.1)] rounded-lg flex md:flex-row my-2 justify-evenly items-center ">
           <div className="flex items-center gap-2">
             <IoIosPeople
               size={40}
@@ -112,9 +107,9 @@ const ViewUsers = () => {
         </div>
 
         <div className="w-full">
-          <main className="m-5 overflow-auto shadow-lg">
-            <section className="w-full bg-white rounded-lg shadow-2xl">
-              <div className="p-6 flex justify-between items-center shadow-lg">
+          <main className="overflow-auto rounded-lg">
+            <section className="w-full bg-white rounded-lg ">
+              <div className="p-6 flex justify-between items-center">
                 <Typography
                   variant="h5"
                   color="blue-gray"
@@ -140,6 +135,7 @@ const ViewUsers = () => {
                   />
                 </div>
               </div>
+
               <Card className="h-[500px] w-full overflow-y-auto border border-gray-300 px-6">
                 <table className="w-full min-w-[10rem] table-auto text-left cursor-pointer">
                   <thead>
@@ -233,7 +229,7 @@ const ViewUsers = () => {
           </main>
         </div>
       </div>
-    </div>
+    
   );
 };
 

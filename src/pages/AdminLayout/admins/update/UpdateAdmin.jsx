@@ -52,11 +52,11 @@ const UpdateAdmin = () => {
   useEffect(() => {
     getTheAdmin();
   }, [id]);
-if (!adminData) return <p>Loading...</p>;
+if (!adminData) return <p>Loading..</p>
   // _____________________________________________________________________
 
   return (
-    <section className="px-8 py-20 container mx-auto">
+    <section className="w-full m-5 bg-white rounded-lg p-5 shadow-[1px_1px_6px_6px_rgba(0,0,0,0.3)] ">
       <Typography variant="h5" color="blue-gray">
         Basic Information
       </Typography>
@@ -184,6 +184,7 @@ if (!adminData) return <p>Loading...</p>;
             />
           </div>
         </div>
+
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
             <Select
@@ -235,6 +236,7 @@ if (!adminData) return <p>Loading...</p>;
             />
           </div>
         </div>
+
         <div className="flex justify-center items-center">
           <Button
             variant="gradient"

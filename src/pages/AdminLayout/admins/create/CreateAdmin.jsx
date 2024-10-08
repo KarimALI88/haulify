@@ -55,7 +55,7 @@ const CreateAdmin = () => {
       reset();
       check(setCheckAdminName);
     }
-    if (admin.username == "") {
+    else if (admin.username == "") {
       reset();
       check(setCheckUserName);
     } else if (!admin.email.includes("@haulify.eg")) {
@@ -101,7 +101,7 @@ const CreateAdmin = () => {
   // _____________________________________________________________________
 
   return (
-    <section className="px-8 py-20 container mx-auto">
+    <div className="w-full m-5 bg-white rounded-lg p-5 shadow-[1px_1px_6px_6px_rgba(0,0,0,0.3)] ">
       <Typography variant="h5" color="blue-gray">
         Basic Information
       </Typography>
@@ -159,6 +159,7 @@ const CreateAdmin = () => {
             />
           </div>
         </div>
+
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
             <Typography
@@ -171,6 +172,7 @@ const CreateAdmin = () => {
             <Input
               size="lg"
               placeholder="emma@mail.com"
+              type="email"
               labelProps={{
                 className: "hidden",
               }}
@@ -213,6 +215,7 @@ const CreateAdmin = () => {
             </Select>
           </div>
         </div>
+
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
             <Typography color="blue-gray" className="mb-2">
@@ -259,6 +262,7 @@ const CreateAdmin = () => {
             />
           </div>
         </div>
+
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
             <Select
@@ -322,18 +326,17 @@ const CreateAdmin = () => {
             />
           </div>
         </div>
+
         <div className="flex justify-center items-center">
-          <Button
-            variant="gradient"
-            color="orange"
-            className="w-[10rem] mx-auto mt-10"
-            onClick={() => handleForm()}
-          >
-            Create
-          </Button>
+            <Button
+              className="w-[10rem] mx-auto mt-10 bg-mainColor"
+              onClick={() => handleForm()}
+            >
+              Create
+            </Button>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
