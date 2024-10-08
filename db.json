@@ -2,8 +2,9 @@
   "users": [
     {
       "id": 1,
-      "name": "ali",
-      "email": "ali@gmail.com",
+      "name": "Ali Ahmed",
+      "username": "aliahmed73",
+      "email": "aliahmed@gmail.com",
       "password": "1234",
       "role": "user",
       "gender": "male",
@@ -11,104 +12,77 @@
       "country": "Egypt"
     },
     {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 2
+      "id": 2,
+      "username": "sobhimohamed58",
+      "name": "Sobhi Mohamed",
+      "email": "sobhimohamed@haulify.eg",
+      "gender": "male",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "admin"
     },
     {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 3
+      "id": 3,
+      "username": "toqaashraf02",
+      "name": "Toqa Ashraf",
+      "email": "toqaashraf@haulify.eg",
+      "gender": "female",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "admin"
     },
     {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 4
+      "id": 4,
+      "username": "amryasser_",
+      "name": "Amr Yasser",
+      "email": "amryasser@haulify.eg",
+      "gender": "male",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "admin"
     },
     {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 5
+      "id": 5,
+      "username": "osama875",
+      "name": "Osama Wafy",
+      "email": "osamawafy@haulify.eg",
+      "gender": "male",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "admin"
     },
     {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 6
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 7
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 8
-    },
-    {
-      "username": "kareem@gmail.com",
-      "password": "123456789",
-      "name": "kareem@gmail.com",
-      "gender": "fake",
-      "id": 9
-    },
-    {
-      "name": "amr@gmail.com",
-      "password": "12345",
-      "gender": "",
-      "id": 10
-    },
-    {
-      "name": "fsjdfl@sadfmf",
-      "password": "fsdfsdf",
-      "id": 11
-    },
-    {
-      "name": "sobhimohamed@gmail.com",
-      "password": "123456",
-      "id": 12
-    },
-    {
-      "name": "dsf@fsdf",
-      "password": "sdfsdf",
-      "id": 13
-    },
-    {
-      "name": "asd@fsdf",
-      "password": "4654",
-      "id": 14
+      "id": 6,
+      "username": "nahlarashad8",
+      "name": "Nahla Rashad",
+      "email": "nahlarashad@gmail.com",
+      "gender": "female",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "user"
     }
   ],
   "products": [
     {
       "title": "tshirt-1",
       "rate": 5,
-      "cateigory": "men",
+      "category": "men",
       "price": 200,
-      "count": 50,
+      "count": 500,
       "description": "fantastic",
       "image": "https://placehold.co/300",
       "offers": "30%",
       "size": [
         "small",
         "medium",
-        "large"
-      ],
-      "id": 3
+        "large",
+        "x-large"
+      ]
     }
   ],
   "cart": [],
