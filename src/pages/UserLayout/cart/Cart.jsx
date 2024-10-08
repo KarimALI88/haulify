@@ -5,12 +5,40 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsCart4 } from "react-icons/bs";
 import ItemCart from "../../../components/UserComponents/item/ItemCart";
+import axios from "axios";
 
 const Cart = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [cartItems, setCartItems] = useState([]);
+  const getCartItems = () => {
+    axios({
+      method: "get",
+      url: "http://localhost:3000/cart",
+    }).then((res) => setCartItems(res.data));
+  };
+  const increment = (id) => {
+    let incremented = cartItems.map((item) =>
+      id == item.id ? { ...item, count: item.count + 1 } : item
+    );
+    setCartItems(incremented);
+  };
+  const decrement = (id) => {
+    let decremented = cartItems.map((item) =>
+      id == item.id && item.count > 1
+        ? { ...item, count: item.count - 1 }
+        : item
+    );
+    setCartItems(decremented);
+  };
+  const remov = (id) => {
+    let updRemoved = cartItems.filter((item) => id != item.id && item);
+    setCartItems(updRemoved);
+  };
+  useEffect(() => {
+    getCartItems();
+  }, []);
 
   return (
     <div className="py-8 min-h-[100vh]">
@@ -39,8 +67,21 @@ const Cart = () => {
                   </span>
                 </p>
               </div>
-
-              <ItemCart quantity={quantity} setQuantity={setQuantity} />
+              {cartItems.length == 0 ? (
+                <h1 className="text-red-600 text-xl text-center font-bold">
+                  Cart is empty
+                </h1>
+              ) : (
+                cartItems.map((item, i) => (
+                  <ItemCart
+                    item={item}
+                    key={i}
+                    increment={increment}
+                    decrement={decrement}
+                    remov={remov}
+                  />
+                ))
+              )}
             </div>
           </CardBody>
         </Card>
@@ -95,7 +136,10 @@ const Cart = () => {
                   Total
                 </span>
                 <span className="text-base font-bold text-gray-900 dark:text-white">
-                  $8,191.00
+                  $
+                  {cartItems
+                    .map((prod) => prod.count * prod.price)
+                    .reduce((prod1, prod2) => prod1 + prod2, 0)}
                 </span>
               </div>
             </div>

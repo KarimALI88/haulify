@@ -23,6 +23,30 @@
       "count": 500
     }
   ],
-  "cart": [],
-  "wishlist": []
+  "cart": [
+    {
+      "id": 1,
+      "title": "t-shirt",
+      "description": "black t-shirt",
+      "price": 100,
+      "offers": "30%",
+      "rate": 4,
+      "image": "https://placehold.co/300",
+      "size": "small",
+      "count": 1
+    }
+  ],
+  "wishlist": [
+    {
+      "id": 1,
+      "title": "t-shirt",
+      "description": "black t-shirt",
+      "price": 100,
+      "offers": "30%",
+      "rate": 4,
+      "image": "https://placehold.co/300",
+      "size": "small",
+      "count": 1
+    }
+  ]
 }
