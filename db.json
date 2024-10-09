@@ -2,13 +2,69 @@
   "users": [
     {
       "id": 1,
-      "name": "ali",
-      "email": "ali@gmail.com",
+      "name": "Ali Ahmed",
+      "username": "aliahmed73",
+      "email": "aliahmed@gmail.com",
       "password": "1234",
       "role": "user",
       "gender": "male",
       "phone": "01111111111",
       "country": "Egypt"
+    },
+    {
+      "id": 2,
+      "username": "sobhimohamed58",
+      "name": "Sobhi Mohamed",
+      "email": "sobhimohamed@haulify.eg",
+      "gender": "male",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "username": "toqaashraf02",
+      "name": "Toqa Ashraf",
+      "email": "toqaashraf@haulify.eg",
+      "gender": "female",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "admin"
+    },
+    {
+      "id": 4,
+      "username": "amryasser_",
+      "name": "Amr Yasser",
+      "email": "amryasser@haulify.eg",
+      "gender": "male",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "admin"
+    },
+    {
+      "id": 5,
+      "username": "osama875",
+      "name": "Osama Wafy",
+      "email": "osamawafy@haulify.eg",
+      "gender": "male",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "admin"
+    },
+    {
+      "id": 6,
+      "username": "nahlarashad8",
+      "name": "Nahla Rashad",
+      "email": "nahlarashad@gmail.com",
+      "gender": "female",
+      "password": "01159363432",
+      "country": "Egypt",
+      "phone": "01159363432",
+      "role": "user"
     }
   ],
   "products": [
@@ -77,6 +133,17 @@
       "size": ["small", "medium"],
       "count": 180,
       "category": "female"
+    },
+    {
+      "title": "tshirt-1",
+      "description": "fantastic",
+      "price": 200,
+      "offers": "30%",
+      "rate": 5,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large", "x-large"],
+      "count": 500,
+      "category": "men"
     }
   ],
   "cart": [],

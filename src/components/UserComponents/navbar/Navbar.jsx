@@ -56,7 +56,7 @@ const Header = ({ theme, setTheme }) => {
 
   return (
     <div className="max-h-[768px] max-w-full">
-      <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none dark:bg-darkMode border-b border-t-0 border-r-0 border-l-0 border-b-[#adadad]">
+      <Navbar className="sticky top-0 z-10 h-max py-5 max-w-full rounded-none dark:bg-darkMode border-b border-t-0 border-r-0 border-l-0 border-b-[#adadad] shadow-none">
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as={Link}
@@ -69,8 +69,8 @@ const Header = ({ theme, setTheme }) => {
           <div className="flex items-center gap-4">
             <div className="flex items-center  gap-5">
               <Typography
-                as={Link}
-                to="/"
+                // as={Link}
+                // to="/"
                 variant="small"
                 color="blue-gray"
                 className="p-1 font-normal"
@@ -162,7 +162,12 @@ const Header = ({ theme, setTheme }) => {
         <Collapse open={openNav}>
           {navList}
           <div className="flex items-center gap-x-1">
-            <Button fullWidth variant="gradient" size="sm" className="bg-mainColor" >
+            <Button
+              fullWidth
+              variant="gradient"
+              size="sm"
+              className="bg-mainColor"
+            >
               <span>Sign in</span>
             </Button>
           </div>
