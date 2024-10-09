@@ -9,105 +9,74 @@
       "gender": "male",
       "phone": "01111111111",
       "country": "Egypt"
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 2
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 3
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 4
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 5
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 6
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 7
-    },
-    {
-      "username": "amr@gmail.com",
-      "password": "123456789",
-      "name": "amr@gmail.com",
-      "gender": "fake",
-      "id": 8
-    },
-    {
-      "username": "kareem@gmail.com",
-      "password": "123456789",
-      "name": "kareem@gmail.com",
-      "gender": "fake",
-      "id": 9
-    },
-    {
-      "name": "amr@gmail.com",
-      "password": "12345",
-      "gender": "",
-      "id": 10
-    },
-    {
-      "name": "fsjdfl@sadfmf",
-      "password": "fsdfsdf",
-      "id": 11
-    },
-    {
-      "name": "sobhimohamed@gmail.com",
-      "password": "123456",
-      "id": 12
-    },
-    {
-      "name": "dsf@fsdf",
-      "password": "sdfsdf",
-      "id": 13
-    },
-    {
-      "name": "asd@fsdf",
-      "password": "4654",
-      "id": 14
     }
   ],
   "products": [
     {
-      "title": "world",
-      "description": "hello world ",
-      "price": 100,
+      "title": "short",
+      "description": "hello world",
+      "price": 900,
       "offers": "30%",
       "rate": 4,
       "image": "https://placehold.co/300",
-      "size": [
-        "small",
-        "medium",
-        "large",
-        "x-large"
-      ],
-      "count": 500
+      "size": ["small", "medium", "large", "x-large"],
+      "count": 500,
+      "category": "male"
+    },
+    {
+      "title": "Women's T-shirt",
+      "description": "Stylish women's t-shirt",
+      "price": 120,
+      "offers": "15%",
+      "rate": 4.3,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large", "x-large"],
+      "count": 300,
+      "category": "female"
+    },
+    {
+      "title": "Men's Jeans",
+      "description": "Classic men's jeans",
+      "price": 200,
+      "offers": "10%",
+      "rate": 4.7,
+      "image": "https://placehold.co/300",
+      "size": ["medium", "large"],
+      "count": 150,
+      "category": "male"
+    },
+    {
+      "title": "Women's Dress",
+      "description": "Elegant women's dress",
+      "price": 250,
+      "offers": "25%",
+      "rate": 4.8,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large"],
+      "count": 100,
+      "category": "female"
+    },
+    {
+      "title": "Men's Jacket",
+      "description": "Warm men's jacket",
+      "price": 300,
+      "offers": "30%",
+      "rate": 4.9,
+      "image": "https://placehold.co/300",
+      "size": ["medium", "large", "x-large"],
+      "count": 80,
+      "category": "male"
+    },
+    {
+      "title": "Women's Skirt",
+      "description": "Chic women's skirt",
+      "price": 140,
+      "offers": "10%",
+      "rate": 4.4,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium"],
+      "count": 180,
+      "category": "female"
     }
   ],
   "cart": [],
