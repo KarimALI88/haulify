@@ -69,46 +69,83 @@
   ],
   "products": [
     {
-      "title": "tshirt-1",
-      "rate": 5,
-      "category": "men",
-      "price": 200,
+      "title": "short",
+      "description": "hello world",
+      "price": 900,
+      "offers": "30%",
+      "rate": 4,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large", "x-large"],
       "count": 500,
+      "category": "male"
+    },
+    {
+      "title": "Women's T-shirt",
+      "description": "Stylish women's t-shirt",
+      "price": 120,
+      "offers": "15%",
+      "rate": 4.3,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large", "x-large"],
+      "count": 300,
+      "category": "female"
+    },
+    {
+      "title": "Men's Jeans",
+      "description": "Classic men's jeans",
+      "price": 200,
+      "offers": "10%",
+      "rate": 4.7,
+      "image": "https://placehold.co/300",
+      "size": ["medium", "large"],
+      "count": 150,
+      "category": "male"
+    },
+    {
+      "title": "Women's Dress",
+      "description": "Elegant women's dress",
+      "price": 250,
+      "offers": "25%",
+      "rate": 4.8,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large"],
+      "count": 100,
+      "category": "female"
+    },
+    {
+      "title": "Men's Jacket",
+      "description": "Warm men's jacket",
+      "price": 300,
+      "offers": "30%",
+      "rate": 4.9,
+      "image": "https://placehold.co/300",
+      "size": ["medium", "large", "x-large"],
+      "count": 80,
+      "category": "male"
+    },
+    {
+      "title": "Women's Skirt",
+      "description": "Chic women's skirt",
+      "price": 140,
+      "offers": "10%",
+      "rate": 4.4,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium"],
+      "count": 180,
+      "category": "female"
+    },
+    {
+      "title": "tshirt-1",
       "description": "fantastic",
-      "image": "https://placehold.co/300",
+      "price": 200,
       "offers": "30%",
-      "size": [
-        "small",
-        "medium",
-        "large",
-        "x-large"
-      ]
+      "rate": 5,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large", "x-large"],
+      "count": 500,
+      "category": "men"
     }
   ],
-  "cart": [
-    {
-      "id": 1,
-      "title": "t-shirt",
-      "description": "black t-shirt",
-      "price": 100,
-      "offers": "30%",
-      "rate": 4,
-      "image": "https://placehold.co/300",
-      "size": "small",
-      "count": 1
-    }
-  ],
-  "wishlist": [
-    {
-      "id": 1,
-      "title": "t-shirt",
-      "description": "black t-shirt",
-      "price": 100,
-      "offers": "30%",
-      "rate": 4,
-      "image": "https://placehold.co/300",
-      "size": "small",
-      "count": 1
-    }
-  ]
+  "cart": [],
+  "wishlist": []
 }

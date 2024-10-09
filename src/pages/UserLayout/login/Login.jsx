@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 
 const Login = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
   const [user, setuser] = useState({
