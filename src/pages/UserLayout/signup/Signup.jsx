@@ -7,6 +7,7 @@ import {
   Option,
 } from "@material-tailwind/react";
 import axios from "axios";
+import imagesign from "../../../assets/signup1.png"
 
 const Signup = () => {
   const [Data, setData] = useState({
@@ -62,8 +63,7 @@ const Signup = () => {
       !error.phoneNumber
     ) {
       const userInfo = {
-        firstName: Data.firstName,
-        lastName: Data.lastName,
+        username: `${Data.firstName} ${Data.lastName}`,
         gender: Data.gender,
         email: Data.email,
         password: Data.password,
@@ -71,7 +71,18 @@ const Signup = () => {
         phoneNumber: Data.phoneNumber,
       };
 
-      axios.post("http://localhost:3000/users", userInfo).then(() => {
+      axios({
+        method: "post",
+        url: "http://localhost:3000/users",
+        data: {
+          username: `${Data.firstName} ${Data.lastName}`, 
+          gender: Data.gender,
+          email: Data.email,
+          password: Data.password,
+          location: Data.location,
+          phoneNumber: Data.phoneNumber,
+        },
+      }).then(() => {
         setData({
           firstName: "",
           lastName: "",
@@ -84,15 +95,16 @@ const Signup = () => {
           phoneNumber: "",
         });
       });
+
     }
   };
 
   return (
     <section className="container mx-auto flex flex-col md:flex-row py-20">
       <div className="w-[50%] flex justify-center items-center mb-10 md:mb-0">
-        <div className="h-96 bg-gray-100 flex justify-center items-center">
+        <div className="h-96  flex justify-center items-center">
           <img
-            src="https://img.freepik.com/free-vector/people-shopping-with-credit-card_53876-66144.jpg?t=st=1727967684~exp=1727971284~hmac=f83441b4e4d0f07d4708427f5a2ea449e0145a58d36ab5ce6866c6bffcd2eada&w=826"
+            src={imagesign}
             alt="Signup Illustration"
             className="object-cover w-full h-full"
           />
@@ -100,23 +112,27 @@ const Signup = () => {
       </div>
 
       <div className="w-full md:w-2/3 px-8 ml-4">
-        
-        <Typography variant="h3" color="blue-gray" className="font-[900] mb-4">
+        <Typography
+          variant="h3"
+          color="blue-gray"
+          className="font-[900] mb-4 dark:text-white"
+        >
           Sign Up
         </Typography>
         <Typography
           variant="small"
-          className="text-gray-600 font-normal mb-16 text-[18px]"
+          className="text-gray-600 font-normal mb-16 text-[18px] dark:text-gray-300"
         >
           Create your account by filling out the information below.
         </Typography>
+
         <form onSubmit={handleForm} className="flex flex-col">
           <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
             <div className="w-full">
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="mb-2 font-medium dark:text-gray-300"
               >
                 First Name
               </Typography>
@@ -127,7 +143,7 @@ const Signup = () => {
                   setData({ ...Data, firstName: e.target.value })
                 }
                 error={check.firstName}
-                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 ${
+                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:bg-gray-700 dark:text-white ${
                   check.firstName ? "border-red-500" : ""
                 }`}
               />
@@ -136,7 +152,7 @@ const Signup = () => {
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="mb-2 font-medium dark:text-gray-300"
               >
                 Last Name
               </Typography>
@@ -145,7 +161,7 @@ const Signup = () => {
                 value={Data.lastName}
                 onChange={(e) => setData({ ...Data, lastName: e.target.value })}
                 error={check.lastName}
-                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 ${
+                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:bg-gray-700 dark:text-white ${
                   check.lastName ? "border-red-500" : ""
                 }`}
                 placeholder="Doe"
@@ -157,7 +173,7 @@ const Signup = () => {
             <Typography
               variant="small"
               color="blue-gray"
-              className="mb-2 font-medium"
+              className="mb-2 font-medium dark:text-gray-300"
             >
               I'm
             </Typography>
@@ -166,7 +182,7 @@ const Signup = () => {
               value={Data.gender}
               onChange={(value) => setData({ ...Data, gender: value })}
               error={check.gender}
-              className={`border-t-blue-gray-200 aria-[expanded=true]:border-t-primary ${
+              className={`border-t-blue-gray-200 dark:bg-gray-700 dark:text-white aria-[expanded=true]:border-t-primary ${
                 check.gender ? "border-red-500" : ""
               }`}
             >
@@ -184,7 +200,7 @@ const Signup = () => {
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="mb-2 font-medium dark:text-gray-300"
               >
                 Email
               </Typography>
@@ -193,7 +209,7 @@ const Signup = () => {
                 value={Data.email}
                 onChange={(e) => setData({ ...Data, email: e.target.value })}
                 error={check.email}
-                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 ${
+                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:bg-gray-700 dark:text-white ${
                   check.email ? "border-red-500" : ""
                 }`}
               />
@@ -205,7 +221,7 @@ const Signup = () => {
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="mb-2 font-medium dark:text-gray-300"
               >
                 Password
               </Typography>
@@ -215,7 +231,7 @@ const Signup = () => {
                 value={Data.password}
                 onChange={(e) => setData({ ...Data, password: e.target.value })}
                 error={check.password}
-                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 ${
+                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:bg-gray-700 dark:text-white ${
                   check.password ? "border-red-500" : ""
                 }`}
               />
@@ -224,7 +240,7 @@ const Signup = () => {
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="mb-2 font-medium dark:text-gray-300"
               >
                 Confirm Password
               </Typography>
@@ -236,7 +252,7 @@ const Signup = () => {
                   setData({ ...Data, confirmPassword: e.target.value })
                 }
                 error={check.confirmPassword}
-                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 ${
+                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:bg-gray-700 dark:text-white ${
                   check.confirmPassword ? "border-red-500" : ""
                 }`}
               />
@@ -248,7 +264,7 @@ const Signup = () => {
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="mb-2 font-medium dark:text-gray-300"
               >
                 Location
               </Typography>
@@ -257,7 +273,7 @@ const Signup = () => {
                 value={Data.location}
                 onChange={(e) => setData({ ...Data, location: e.target.value })}
                 error={check.location}
-                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 ${
+                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:bg-gray-700 dark:text-white ${
                   check.location ? "border-red-500" : ""
                 }`}
               />
@@ -266,7 +282,7 @@ const Signup = () => {
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="mb-2 font-medium"
+                className="mb-2 font-medium dark:text-gray-300"
               >
                 Phone Number
               </Typography>
@@ -277,14 +293,18 @@ const Signup = () => {
                   setData({ ...Data, phoneNumber: e.target.value })
                 }
                 error={check.phoneNumber}
-                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 ${
+                className={`w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:bg-gray-700 dark:text-white ${
                   check.phoneNumber ? "border-red-500" : ""
                 }`}
               />
             </div>
           </div>
 
-          <Button type="submit"  fullWidth className="mt-6 bg-deep-orange-700">
+          <Button
+            type="submit"
+            fullWidth
+            className="mt-6 bg-deep-orange-700 dark:bg-deep-orange-500"
+          >
             Sign Up
           </Button>
         </form>
@@ -294,27 +314,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

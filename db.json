@@ -20,7 +20,12 @@
       "offers": "30%",
       "rate": 4,
       "image": "https://placehold.co/300",
-      "size": ["small", "medium", "large", "x-large"],
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "x-large"
+      ],
       "count": 500,
       "category": "male"
     }
@@ -35,9 +40,14 @@
       "offers": "30%",
       "rate": 4,
       "image": "https://placehold.co/300",
-      "size": ["small", "medium", "large", "x-large"],
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "x-large"
+      ],
       "count": 500,
       "category": "male"
-    }
-  ]
+    }
+  ]
 }
