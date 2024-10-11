@@ -71,7 +71,6 @@ const Products = ({
         >
           <FiHeart className="h-6 w-6" />
         </IconButton>
-
         <Button size="lg" className="bg-deep-orange-600">
           <Link to={`/products/${id}`}>Details</Link>
 
