@@ -9,36 +9,45 @@
       "gender": "male",
       "phone": "01111111111",
       "country": "Egypt"
-    },
+    }
   ],
   "products": [
     {
-      "id":1,
+      "id": 1,
       "title": "short",
       "description": "hello world",
       "price": 900,
       "offers": "30%",
       "rate": 4,
       "image": "https://placehold.co/300",
-      "size": ["small", "medium", "large", "x-large"],
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "x-large"
+      ],
       "count": 500,
       "category": "male"
-    },
-    
+    }
   ],
   "cart": [],
   "wishlist": [
     {
-      "id":1,
+      "id": 1,
       "title": "short",
       "description": "hello world",
       "price": 900,
       "offers": "30%",
       "rate": 4,
       "image": "https://placehold.co/300",
-      "size": ["small", "medium", "large", "x-large"],
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "x-large"
+      ],
       "count": 500,
       "category": "male"
-    },
+    }
   ]
 }
