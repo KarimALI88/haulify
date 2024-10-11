@@ -144,7 +144,6 @@ const ViewAdmins = () => {
                 <thead>
                   <tr>
                     <th className="text-left p-4 pl-0">Name</th>
-                    <th className="text-left p-4 pl-0">Username</th>
                     <th className="text-left p-4 pl-0">Email</th>
                     <th className="text-left p-4 pl-0">Gender</th>
                     <th className="text-left p-4 pl-0">Phone</th>
@@ -164,15 +163,6 @@ const ViewAdmins = () => {
                         : "py-4 border-b border-gray-300";
                       return (
                         <tr key={admin.id}>
-                          <td className={classes}>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-bold"
-                            >
-                              {admin.name}
-                            </Typography>
-                          </td>
                           <td className={classes}>
                             <Typography
                               variant="small"
