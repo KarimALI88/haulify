@@ -13,6 +13,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
 
+
 const Header = ({ theme, setTheme }) => {
   const [openNav, setOpenNav] = React.useState(false);
   React.useEffect(() => {
@@ -29,13 +30,13 @@ const Header = ({ theme, setTheme }) => {
         to="/"
         variant="small"
         color="blue-gray"
-        className="p-3 rounded-md font-[600] text-darkMode dark:text-[white] hover:bg-mainColor  "
+        className="p-3 rounded-md font-[600] text-darkMode dark:text-[white] hover:bg-mainColor "
       >
         Home
       </Typography>
       <Typography
         as={Link}
-        to="/"
+        to="/products"
         variant="small"
         color="blue-gray"
         className="p-3 rounded-md font-[600] text-darkMode dark:text-[white] hover:bg-mainColor  "
@@ -44,7 +45,7 @@ const Header = ({ theme, setTheme }) => {
       </Typography>
       <Typography
         as={Link}
-        to="/"
+        to="/contact-us"
         variant="small"
         color="blue-gray"
         className="p-3 rounded-md font-[600] text-darkMode dark:text-[white] hover:bg-mainColor  "
@@ -91,7 +92,7 @@ const Header = ({ theme, setTheme }) => {
               </Typography>
               <Typography
                 as={Link}
-                to="/"
+                to="/cart"
                 variant="small"
                 color="blue-gray"
                 className="p-1 font-normal"
@@ -103,8 +104,7 @@ const Header = ({ theme, setTheme }) => {
               </Typography>
               <Typography
                 as={Link}
-                to="/"
-                variant="small"
+                to="/wishlist"
                 color="blue-gray"
                 className="p-1 font-normal"
               >
@@ -114,10 +114,10 @@ const Header = ({ theme, setTheme }) => {
                 />
               </Typography>
               <Button
-                size="sm"
+                size="lg"
                 className="hidden lg:inline-block bg-mainColor text-black font-[600]"
               >
-                Sign in
+                <Link to="/login">Sign in</Link>
               </Button>
             </div>
             <IconButton
@@ -165,10 +165,10 @@ const Header = ({ theme, setTheme }) => {
             <Button
               fullWidth
               variant="gradient"
-              size="sm"
-              className="bg-mainColor"
+              size="lg"
+              className="hidden lg:inline-block bg-mainColor text-black font-[600]"
             >
-              <span>Sign in</span>
+              <Link to="/login">Sign in</Link>
             </Button>
           </div>
         </Collapse>

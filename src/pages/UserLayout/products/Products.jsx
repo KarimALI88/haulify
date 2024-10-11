@@ -1,6 +1,6 @@
 import React from "react";
 import { FiHeart } from "react-icons/fi";
-
+import { Link } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -12,7 +12,7 @@ import {
 } from "@material-tailwind/react";
 
 const Products = ({
-  product: { description, image, offers, price, title },
+  product: { description, image, offers, price, title,id },
 }) => {
   return (
     <Card className="w-full max-w-[20rem] shadow-lg mt-5 max-h-max dark:bg-gray-800 dark:text-white">
@@ -71,11 +71,8 @@ const Products = ({
         >
           <FiHeart className="h-6 w-6" />
         </IconButton>
-        <Button
-          size="lg"
-          className="bg-deep-orange-600 dark:bg-deep-orange-400"
-        >
-          Details
+        <Button size="lg" className="bg-deep-orange-600">
+          <Link to={`/products/${id}`}>Details</Link>
         </Button>
       </CardFooter>
     </Card>
