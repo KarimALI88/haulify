@@ -2,7 +2,6 @@
   "users": [
     {
       "id": 1,
-      "name": "Ali Ahmed",
       "username": "aliahmed73",
       "email": "aliahmed@gmail.com",
       "password": "1234",
@@ -10,81 +9,36 @@
       "gender": "male",
       "phone": "01111111111",
       "country": "Egypt"
-    },
-    {
-      "id": 2,
-      "username": "sobhimohamed58",
-      "name": "Sobhi Mohamed",
-      "email": "sobhimohamed@haulify.eg",
-      "gender": "male",
-      "password": "01159363432",
-      "country": "Egypt",
-      "phone": "01159363432",
-      "role": "admin"
-    },
-    {
-      "id": 3,
-      "username": "toqaashraf02",
-      "name": "Toqa Ashraf",
-      "email": "toqaashraf@haulify.eg",
-      "gender": "female",
-      "password": "01159363432",
-      "country": "Egypt",
-      "phone": "01159363432",
-      "role": "admin"
-    },
-    {
-      "id": 4,
-      "username": "amryasser_",
-      "name": "Amr Yasser",
-      "email": "amryasser@haulify.eg",
-      "gender": "male",
-      "password": "01159363432",
-      "country": "Egypt",
-      "phone": "01159363432",
-      "role": "admin"
-    },
-    {
-      "id": 5,
-      "username": "osama875",
-      "name": "Osama Wafy",
-      "email": "osamawafy@haulify.eg",
-      "gender": "male",
-      "password": "01159363432",
-      "country": "Egypt",
-      "phone": "01159363432",
-      "role": "admin"
-    },
-    {
-      "id": 6,
-      "username": "nahlarashad8",
-      "name": "Nahla Rashad",
-      "email": "nahlarashad@gmail.com",
-      "gender": "female",
-      "password": "01159363432",
-      "country": "Egypt",
-      "phone": "01159363432",
-      "role": "user"
     }
   ],
   "products": [
     {
-      "title": "tshirt-1",
-      "rate": 5,
-      "category": "men",
-      "price": 200,
-      "count": 500,
-      "description": "fantastic",
-      "image": "https://placehold.co/300",
+      "id":1,
+      "title": "short",
+      "description": "hello world",
+      "price": 900,
       "offers": "30%",
-      "size": [
-        "small",
-        "medium",
-        "large",
-        "x-large"
-      ]
+      "rate": 4,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large", "x-large"],
+      "count": 500,
+      "category": "male"
     }
+    
   ],
   "cart": [],
-  "wishlist": []
+  "wishlist": [
+    {
+      "id":1,
+      "title": "short",
+      "description": "hello world",
+      "price": 900,
+      "offers": "30%",
+      "rate": 4,
+      "image": "https://placehold.co/300",
+      "size": ["small", "medium", "large", "x-large"],
+      "count": 500,
+      "category": "male"
+    }
+  ]
 }
