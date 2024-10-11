@@ -44,7 +44,7 @@ const Sidebar = ({ products, setproductdata }) => {
 
   return (
     <div className="flex">
-      <div className="hidden lg:flex flex-col w-[20rem] rounded-lg text-black h-[94vh] min-w-[15rem] p-4 shadow-[1px_1px_6px_6px_rgba(0,0,0,0.3)] m-5 z-10">
+      <div className="hidden lg:flex flex-col w-[20rem] rounded-lg text-black h-[94vh] min-w-[15rem] p-4 shadow-[1px_1px_6px_6px_rgba(0,0,0,0.3)]  m-5 z-10 border-2 border-black ">
         <div className="p-2 mb-4">
           <Input
             icon={<MagnifyingGlassIcon className="h-5 w-5" />}
@@ -78,20 +78,15 @@ const Sidebar = ({ products, setproductdata }) => {
 
             <AccordionBody className="py-1">
               <List className="p-0">
-                <ListItem>
-                  <div className="text-cyan-400">
-                    <IoManSharp />
-                  </div>
-                  <button onClick={() => filterByCategory("male")}>Men</button>
+                <ListItem onClick={() => filterByCategory("male")}>
+                  <IoManSharp className="text-cyan-400" />
+
+                  <button>Men</button>
                 </ListItem>
 
-                <ListItem>
-                  <div className="text-pink-500">
-                    <IoWoman />
-                  </div>
-                  <button onClick={() => filterByCategory("female")}>
-                    Women
-                  </button>
+                <ListItem onClick={() => filterByCategory("female")}>
+                  <IoWoman className="text-pink-500" />
+                  <button>Women</button>
                 </ListItem>
               </List>
             </AccordionBody>
@@ -164,17 +159,13 @@ const Sidebar = ({ products, setproductdata }) => {
 
                 <AccordionBody className="py-1">
                   <List className="p-0">
-                    <ListItem>
-                      <button onClick={() => filterByCategory("male")}>
-                        <IoManSharp className="text-cyan-400" />
-                        Men
-                      </button>
+                    <ListItem onClick={() => filterByCategory("male")}>
+                      <IoManSharp className="text-cyan-400" />
+                      <span> Men</span>
                     </ListItem>
-                    <ListItem>
-                      <button onClick={() => filterByCategory("female")}>
-                        <IoWoman className="text-pink-500" />
-                        Women
-                      </button>
+                    <ListItem onClick={() => filterByCategory("female")}>
+                      <IoWoman className="text-pink-500" />
+                      <span> Women</span>
                     </ListItem>
                   </List>
                 </AccordionBody>

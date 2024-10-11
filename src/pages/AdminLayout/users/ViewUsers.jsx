@@ -141,7 +141,6 @@ const ViewUsers = () => {
                   <thead>
                     <tr>
                       <th className="text-left p-4 pl-0">Name</th>
-                      <th className="text-left p-4 pl-0">Username</th>
                       <th className="text-left p-4 pl-0">Email</th>
                       <th className="text-left p-4 pl-0">Gender</th>
                       <th className="text-left p-4 pl-0">Phone</th>
@@ -159,15 +158,6 @@ const ViewUsers = () => {
 
                         return (
                           <tr key={user.id} className="hover:bg-gray-50">
-                            <td className={classes}>
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-bold"
-                              >
-                                {user.name}
-                              </Typography>
-                            </td>
                             <td className={classes}>
                               <Typography
                                 variant="small"
