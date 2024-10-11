@@ -1,10 +1,9 @@
 import React from 'react'
 import { FaFacebook  } from "react-icons/fa";
 import { FaSquareInstagram,FaSquareXTwitter } from "react-icons/fa6";
-
-
 import { Link } from 'react-router-dom';
 import { Typography } from "@material-tailwind/react";
+
 const Footer = () => {
   return (
     <footer className="w-full dark:bg-darkMode bg-white p-8 border-t border-b-0 border-r-0 border-l-0 border-t-[#adadad]">
@@ -22,7 +21,7 @@ const Footer = () => {
       </Typography>
       <Typography
         as={Link}
-        to="/"
+        to="/products"
         variant="small"
         color="blue-gray"
         className="p-3 rounded-md font-[600] hover:bg-mainColor  text-darkMode dark:text-[white]"
@@ -31,7 +30,7 @@ const Footer = () => {
       </Typography>
       <Typography
         as={Link}
-        to="/"
+        to="/contact-us"
         variant="small"
         color="blue-gray"
         className="p-3 rounded-md font-[600] hover:bg-mainColor  text-darkMode dark:text-[white]"
