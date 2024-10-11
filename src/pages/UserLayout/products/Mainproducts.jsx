@@ -25,7 +25,7 @@ const Mainproducts = () => {
     <div className="flex">
 
       <Sidebar products={products} setproductdata={setproductdata} />
-      <div className="flex flex-row flex-wrap justify-center items-center w-full p-8">
+      <div className="gap-5 flex flex-row flex-wrap justify-center items-center w-full p-8">
         {productdata.map((product, index) => (
           <Products product={product} key={index} />
         ))}
