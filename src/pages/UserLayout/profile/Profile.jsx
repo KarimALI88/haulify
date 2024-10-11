@@ -81,8 +81,8 @@ const Profile = () => {
             id="username"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter your username"
-            value={userInfo.name || ""}
-            onChange={(e) => handleChange(e, "name")}
+            value={userInfo.username || ""}
+            onChange={(e) => handleChange(e, "username")}
             disabled={goEdit}
           />
         </div>
