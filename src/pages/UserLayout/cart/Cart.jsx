@@ -48,31 +48,33 @@ const Cart = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row lg:justify-between">
-        <Card className="m-6 lg:mr-0 px-6 lg:w-full flex-1 space-y-6 dark:border-gray-700 dark:bg-gray-800">
-          <CardBody className="py-2 px-0">
-            <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">
-              <div className="hidden lg:grid grid-cols-2 py-6">
-                <div className="font-normal text-xl leading-8 text-gray-500">
-                  Product
+        {cartItems.length == 0 ? (
+          <div className="flex justify-center items-center w-[70%]">
+            <h1 className="text-red-600 text-xl text-center font-bold">
+              Cart is empty
+            </h1>
+          </div>
+        ) : (
+          <Card className="m-6 lg:mr-0 px-6 lg:w-full flex-1 space-y-6 dark:border-gray-700 dark:bg-gray-800">
+            <CardBody className="py-2 px-0">
+              <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">
+                <div className="hidden lg:grid grid-cols-2 py-6">
+                  <div className="font-normal text-xl leading-8 text-gray-500">
+                    Product
+                  </div>
+                  <p className="font-normal text-xl leading-8 text-gray-500 flex items-center justify-between">
+                    <span className="w-full max-w-[200px] text-center">
+                      Price
+                    </span>
+                    <span className="w-full max-w-[260px] text-center">
+                      Quantity
+                    </span>
+                    <span className="w-full max-w-[200px] text-center">
+                      Total
+                    </span>
+                  </p>
                 </div>
-                <p className="font-normal text-xl leading-8 text-gray-500 flex items-center justify-between">
-                  <span className="w-full max-w-[200px] text-center">
-                    Price
-                  </span>
-                  <span className="w-full max-w-[260px] text-center">
-                    Quantity
-                  </span>
-                  <span className="w-full max-w-[200px] text-center">
-                    Total
-                  </span>
-                </p>
-              </div>
-              {cartItems.length == 0 ? (
-                <h1 className="text-red-600 text-xl text-center font-bold">
-                  Cart is empty
-                </h1>
-              ) : (
-                cartItems.map((item, i) => (
+                {cartItems.map((item, i) => (
                   <ItemCart
                     item={item}
                     key={i}
@@ -80,11 +82,11 @@ const Cart = () => {
                     decrement={decrement}
                     remov={remov}
                   />
-                ))
-              )}
-            </div>
-          </CardBody>
-        </Card>
+                ))}
+              </div>
+            </CardBody>
+          </Card>
+        )}
 
         <div className="my-6 px-6 w-full lg:max-w-sm flex-1 space-y-6">
           <div className="space-y-4 rounded-lg border border-gray-200 bg-[#88A0A8] p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
