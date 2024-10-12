@@ -13,7 +13,7 @@
   ],
   "products": [
     {
-      "id":1,
+      "id": 1,
       "title": "short",
       "description": "hello world",
       "price": 900,
@@ -29,7 +29,7 @@
   "cart": [],
   "wishlist": [
     {
-      "id":1,
+      "id": 1,
       "title": "short",
       "description": "hello world",
       "price": 900,
