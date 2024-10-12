@@ -13,15 +13,23 @@ import { useCountries } from "use-react-countries";
 const UpdateAdmin = () => {
   const { countries } = useCountries();
   const { id } = useParams();
-  const [adminData, setAdminData] = useState(null);
-  const getTheAdmin = () => {
-    axios({
-      method: "get",
-      url: `http://localhost:3000/users/${id}`,
-    }).then((data) => {
-      setAdminData(data.data);
+  const [adminData, setAdminData] = useState({ firstname: "", lastname: "" });
+
+const getTheAdmin = () => {
+  axios({
+    method: "get",
+    url: `http://localhost:3000/users/${id}`,
+  }).then((response) => {
+    const username = response.data.username || "";
+    const [firstname, lastname] = username.split(" ");
+
+    setAdminData({
+      ...response.data,
+      firstname: firstname || "", 
+      lastname: lastname || "", 
     });
-  };
+  });
+};
 
   // _____________________________________________________________________
 
@@ -37,11 +45,16 @@ const UpdateAdmin = () => {
   // _____________________________________________________________________
 
   const navigate = useNavigate();
+  const {  firstname, lastname, ...dataToSend } = adminData;
+
   const handleSave = () => {
     axios({
       method: "put",
       url: `http://localhost:3000/users/${id}`,
-      data: adminData,
+      data: {
+        ...dataToSend,
+        username: adminData.firstname + " " + adminData.lastname
+      },
     });
     navigate("/admin/admins");
   };
@@ -69,17 +82,17 @@ if (!adminData) return <p>Loading..</p>
               color="blue-gray"
               className="mb-2 font-medium"
             >
-              Admin Name
+              Firstname
             </Typography>
             <Input
               size="lg"
-              placeholder="Emma Watson"
+              placeholder="Emma"
               labelProps={{
                 className: "hidden",
               }}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
-              value={adminData.name}
-              name="name"
+              value={adminData.firstname}
+              name="firstname"
               onChange={handleInputChange}
             />
           </div>
@@ -89,17 +102,17 @@ if (!adminData) return <p>Loading..</p>
               color="blue-gray"
               className="mb-2 font-medium"
             >
-              Username
+              Lastname
             </Typography>
             <Input
               size="lg"
-              placeholder="emmawatson02"
+              placeholder="Watson"
               labelProps={{
                 className: "hidden",
               }}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
-              value={adminData.username}
-              name="username"
+              value={adminData.lastname}
+              name="lastname"
               onChange={handleInputChange}
             />
           </div>
