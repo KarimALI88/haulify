@@ -35,6 +35,7 @@ const Cart = () => {
   const remov = (id) => {
     let updRemoved = cartItems.filter((item) => id != item.id && item);
     setCartItems(updRemoved);
+    //need to update db.json not only cart UI
   };
   useEffect(() => {
     getCartItems();
@@ -43,13 +44,15 @@ const Cart = () => {
   return (
     <div className="py-8 min-h-[100vh]">
       <div className="my-6 flex justify-center items-center gap-2">
-        <BsCart4 className="text-3xl text-mainColor leading-[1]" />
-        <span className="text-2xl dark:text-white">Shopping Cart</span>
+        <div className="flex w-[13rem] gap-2 border-b-4 border-mainColor pb-2">
+          <BsCart4 className="text-3xl text-mainColor" />
+          <span className="text-2xl dark:text-white">Shopping Cart</span>
+        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row lg:justify-between">
         {cartItems.length == 0 ? (
-          <div className="flex justify-center items-center w-[70%]">
+          <div className="flex justify-center items-center lg:w-[70%]">
             <h1 className="text-red-600 text-xl text-center font-bold">
               Cart is empty
             </h1>

@@ -13,7 +13,7 @@ import {
 
 const Products = ({
   product: { description, image, offers, price, title,id },
-}) => {
+}, addToWishlist) => {
 
 
   return (
@@ -63,6 +63,7 @@ const Products = ({
           color="red"
           variant="text"
           className="!absolute  right-4 rounded-full"
+          onClick={() => addToWishlist(id)}
         >
           <FiHeart className="h-6 w-6" />
 
