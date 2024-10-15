@@ -10,7 +10,7 @@ import {
     Option,
 } from "@material-tailwind/react";
 
-const CreateProduct = () => {
+const CreateProduct = ({setIsChanged}) => {
     const [size, setSize] = useState([]);
     const [product, setProduct] = useState({
         title: "",
@@ -40,6 +40,7 @@ const CreateProduct = () => {
             url: `http://localhost:3000/products`,
             data: { ...product, size: size },
         }).then(() => {
+            setIsChanged(true)
             navigate(-1);
         });
     };
@@ -81,7 +82,7 @@ const CreateProduct = () => {
                             onChange={(e) =>
                                 setProduct({
                                     ...product,
-                                    price: parseInt(e.target.value),
+                                    price: isNaN(e.target.value)||e.target.value=='' ? e.target.value : parseInt(e.target.value),
                                 })
                             }
                         />
@@ -94,7 +95,7 @@ const CreateProduct = () => {
                             onChange={(e) =>
                                 setProduct({
                                     ...product,
-                                    count: parseInt(e.target.value),
+                                    count: isNaN(e.target.value)||e.target.value=='' ? e.target.value : parseInt(e.target.value),
                                 })
                             }
                         />

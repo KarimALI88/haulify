@@ -13,14 +13,14 @@ import NotFound from './pages/UserLayout/not-found/NotFound';
 import Contact from './pages/UserLayout/contact-us/Contact';
 import Mainproducts from './pages/UserLayout/products/Mainproducts';
 
-const UserLayout = ({theme, setTheme}) => {
+const UserLayout = ({theme, setTheme,products,productdata,setproductdata}) => {
   return (
     <div className='dark:bg-darkMode'>
         <Header theme ={theme} setTheme={setTheme}/>
         {/* ====================================================== */}
         <Routes>
           <Route path='/' element={<Home/>} />
-          <Route path='/products' element={<Mainproducts/>} />
+          <Route path='/products' element={<Mainproducts products={products}  productdata={productdata} setproductdata={setproductdata}/>} />
           <Route path='/products/:id' element={<SingleProduct/>} />
           <Route path='/profile/:id' element={<Profile/>} />
           <Route path='/login' element={<Login/>} />

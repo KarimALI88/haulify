@@ -9,7 +9,7 @@ import {
     Select,
     Option,
 } from "@material-tailwind/react";
-const UpdateProduct = () => {
+const UpdateProduct = ({setIsChanged}) => {
     const [size, setSize] = useState([]);
     const [product, setProduct] = useState({
         title: "",
@@ -50,6 +50,7 @@ const UpdateProduct = () => {
             url: `http://localhost:3000/products/${product.id}`,
             data: {...product,size:size},
         }).then(() => {
+            setIsChanged(true)
             navigate(-1);
         });
     };
@@ -99,7 +100,7 @@ const UpdateProduct = () => {
                             onChange={(e) =>
                                 setProduct({
                                     ...product,
-                                    rate: parseInt(e.target.value),
+                                    rate:isNaN(e.target.value)||e.target.value=='' ? e.target.value : parseInt(e.target.value),
                                 })
                             }
                         />
@@ -112,7 +113,7 @@ const UpdateProduct = () => {
                             onChange={(e) =>
                                 setProduct({
                                     ...product,
-                                    price: parseInt(e.target.value),
+                                    price: isNaN(e.target.value)||e.target.value=='' ? e.target.value : parseInt(e.target.value),
                                 })
                             }
                         />
@@ -125,7 +126,7 @@ const UpdateProduct = () => {
                             onChange={(e) =>
                                 setProduct({
                                     ...product,
-                                    count: parseInt(e.target.value),
+                                    count: isNaN(e.target.value)||e.target.value=='' ? e.target.value : parseInt(e.target.value),
                                 })
                             }
                         />
