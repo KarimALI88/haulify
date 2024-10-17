@@ -20,22 +20,41 @@ const Cart = () => {
   };
   const increment = (id) => {
     let incremented = cartItems.map((item) =>
-      id == item.id ? { ...item, count: item.count + 1 } : item
+      id === item.id ? { ...item, count: item.count + 1 } : item
     );
     setCartItems(incremented);
   };
   const decrement = (id) => {
     let decremented = cartItems.map((item) =>
-      id == item.id && item.count > 1
+      id === item.id && item.count > 1
         ? { ...item, count: item.count - 1 }
         : item
     );
     setCartItems(decremented);
   };
   const remov = (id) => {
-    let updRemoved = cartItems.filter((item) => id != item.id && item);
+    let updRemoved = cartItems.filter((item) => id !== item.id);
     setCartItems(updRemoved);
-    //need to update db.json not only cart UI
+    axios({
+      method: "delete",
+      url: `http://localhost:3000/cart/${id}`,
+    })
+      .then(() => console.log("Removed from Cart"))
+      .catch((error) => console.error("Error removing from Cart", error));
+  };
+
+  const addToCart = (id) => {
+    let targetProduct = cartItems.find((product) => id === product.id);
+    if (targetProduct) {
+      setCartItems([...cartItems, targetProduct]);
+      axios({
+        method: "post",
+        url: `http://localhost:3000/cart`,
+        data: targetProduct,
+      })
+        .then(() => console.log("Added to Cart"))
+        .catch((error) => console.log("Error Adding to cart", error));
+    }
   };
   useEffect(() => {
     getCartItems();
@@ -51,7 +70,7 @@ const Cart = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row lg:justify-between">
-        {cartItems.length == 0 ? (
+        {cartItems.length === 0 ? (
           <div className="flex justify-center items-center lg:w-[70%]">
             <h1 className="text-red-600 text-xl text-center font-bold">
               Cart is empty

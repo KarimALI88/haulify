@@ -4,7 +4,13 @@ import UserLayout from './UserLayout';
 import AdminLayout from './AdminLayout';
 
 const App = () => {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme;
+    }
+    return 'light';
+  });
 
   useEffect(() => {
     localStorage.theme = theme
