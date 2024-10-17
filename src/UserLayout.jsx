@@ -19,7 +19,7 @@ const UserLayout = ({theme, setTheme,products,productdata,setproductdata}) => {
         <Header theme ={theme} setTheme={setTheme}/>
         {/* ====================================================== */}
         <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<Home products={products}/>} />
           <Route path='/products' element={<Mainproducts products={products}  productdata={productdata} setproductdata={setproductdata}/>} />
           <Route path='/products/:id' element={<SingleProduct/>} />
           <Route path='/profile/:id' element={<Profile/>} />
