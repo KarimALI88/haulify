@@ -11,29 +11,48 @@ import Dashboard from "./pages/AdminLayout/dashboard/Dashboard";
 import ViewUsers from "./pages/AdminLayout/users/ViewUsers";
 import NotFound from "./pages/UserLayout/not-found/NotFound";
 
-const AdminLayout = () => {
-  return (
-    <div className="bg-[#EDEEF2] flex flex-col md:flex-row w-full justify-between">
-      <div className="w-full md:w-1/4">
-        <AdminSideBar />
-      </div>
-      <Routes>
-        <Route path="/products" element={<ViewProducts />} />
-        <Route path="/create-product" element={<CreateProduct />} />
-        <Route path="/update-product/:id" element={<UpdateProduct />} />
-        {/* =========================================================================== */}
-        <Route path="/admins" element={<ViewAdmins />} />
-        <Route path="/create-admin" element={<CreateAdmin />} />
-        <Route path="/update-admin/:id" element={<UpdateAdmin />} />
-        {/* =========================================================================== */}
-        <Route path="/" element={<Dashboard />} />
-        {/* =========================================================================== */}
-        <Route path="/users" element={<ViewUsers />} />
-        {/* =========================================================================== */}
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
-    </div>
-  );
+const AdminLayout = ({
+    products,
+    productdata,
+    setproductdata,
+    setIsChanged
+
+}) => {
+    return (
+        <div className="bg-[#EDEEF2] flex flex-col md:flex-row w-full justify-between">
+            <div className="w-full md:w-1/4">
+                <AdminSideBar />
+            </div>
+            <Routes>
+                <Route
+                    path="/products"
+                    element={
+                        <ViewProducts
+                            products={products}
+                            productdata={productdata}
+                            setproductdata={setproductdata}
+                            setIsChanged={setIsChanged}
+                        />
+                    }
+                />
+                <Route
+                    path="/create-product"
+                    element={<CreateProduct setIsChanged={setIsChanged} />}
+                />
+                <Route path="/update-product/:id" element={<UpdateProduct setIsChanged={setIsChanged} />} />
+                {/* =========================================================================== */}
+                <Route path="/admins" element={<ViewAdmins />} />
+                <Route path="/create-admin" element={<CreateAdmin />} />
+                <Route path="/update-admin/:id" element={<UpdateAdmin />} />
+                {/* =========================================================================== */}
+                <Route path="/" element={<Dashboard />} />
+                {/* =========================================================================== */}
+                <Route path="/users" element={<ViewUsers />} />
+                {/* =========================================================================== */}
+                <Route path="/*" element={<NotFound />} />
+            </Routes>
+        </div>
+    );
 };
 
 export default AdminLayout;

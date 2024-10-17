@@ -10,7 +10,7 @@ import {
     Button,
 } from "@material-tailwind/react";
 import axios from "axios";
-const Product = ({ title, image, price,id , }) => {
+const Product = ({ title, image, price, id, setIsChanged }) => {
     const deleteProduct = (id) => {
         const SwalButtons = Swal.mixin({
             customClass: {
@@ -28,22 +28,19 @@ const Product = ({ title, image, price,id , }) => {
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "No, cancel!",
             reverseButtons: true,
-        }).then((result) => {             
+        }).then((result) => {
             if (result.isConfirmed) {
                 axios({
-                    method:"delete",
-                    url:`http://localhost:3000/products/${id}`
-                })
+                    method: "delete",
+                    url: `http://localhost:3000/products/${id}`,
+                }).then(() => setIsChanged(true));
+
                 SwalButtons.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",
                     icon: "success",
                 });
-
-            } 
-            else if (
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
                 SwalButtons.fire({
                     title: "Cancelled",
                     text: "Your product has not been deleted 👍",
@@ -69,9 +66,16 @@ const Product = ({ title, image, price,id , }) => {
             </CardBody>
             <CardFooter className="pt-0 flex gap-5 justify-center">
                 <Link to={`/admin/update-product/${id}`}>
-                    <Button> Update</Button>
+                    <Button onClick={() => setIsChanged(false)}> Update</Button>
                 </Link>
-                <Button onClick={()=>deleteProduct(id)}>Delete</Button>
+                <Button
+                    onClick={() => {
+                        deleteProduct(id);
+                        setIsChanged(false);
+                    }}
+                >
+                    Delete
+                </Button>
             </CardFooter>
         </Card>
     );
