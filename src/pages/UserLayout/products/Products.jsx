@@ -73,6 +73,7 @@ const Products = ({
         </IconButton>
         <Button size="lg" className="bg-deep-orange-600">
           <Link to={`/products/${id}`}>Details</Link>
+
         </Button>
       </CardFooter>
     </Card>
