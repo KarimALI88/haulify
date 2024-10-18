@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactStars from "react-stars";
 import { Button } from "@material-tailwind/react";
 import { IoIosCart } from "react-icons/io";
 import { BsStars } from "react-icons/bs";
 import Product from "../../../components/UserComponents/product/Product";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from 'react-toastify'
 
 const SingleProduct = () => {
   const [product, setProduct] = useState({
@@ -18,7 +21,7 @@ const SingleProduct = () => {
     size: ["small", "medium", "large", "x-large"],
     count: 500,
   });
-
+  const [cart, setCart] = useState([])
   const [newArrivals, setNewArrivals] = useState([
     {
       name: "T-Shirt",
@@ -49,8 +52,11 @@ const SingleProduct = () => {
         "https://img.freepik.com/free-photo/pair-trainers_144627-3800.jpg?ga=GA1.1.421455853.1676884464&semt=ais_hybrid",
     },
   ]);
+  const { id } = useParams();
+  const [numOfItem, setNumOfItem] = useState(1);
+  const [productSize, setProductSize] = useState("");
 
-  const [numOfItem, setNumOfItem] = useState(0);
+  const navigate = useNavigate()
 
   const increment = () => {
     setNumOfItem((prevState) => prevState + 1);
@@ -59,6 +65,47 @@ const SingleProduct = () => {
   const decrement = () => {
     setNumOfItem((prevState) => prevState - 1);
   };
+
+  const fetchProduct = () => {
+    try {
+       axios({
+        method: "get",
+        url: `${import.meta.env.VITE_LINK_API}/products/${id}`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then(({ data }) => setProduct(data));
+    } catch (error) {
+      console.error("error fetching api", error);
+    }
+  };
+
+  const addToCart =  () => {
+    try {
+      axios({
+        method:"post",
+        url: `${import.meta.env.VITE_LINK_API}/cart`,
+        data: {
+          ...product,
+          amount: numOfItem,
+          choosenSize: productSize
+        },
+        headers: {
+          "Content-Type":"application/json"
+        }
+      }).then(data => {
+        console.log("data submitted", data)
+        toast.success("added successfully")
+        navigate("/cart")
+      }).catch(toast.error("added before"))
+    } catch (error) {
+      console.error("error fetch api", error)
+    }
+  }
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
 
   return (
     <div className="my-16 ">
@@ -72,7 +119,7 @@ const SingleProduct = () => {
           />
         </div>
         <div className="lg:w-[50%] sm:w-[300px]">
-          <h1 className="mb-5 font-[700] text-4xl text-mainColor uppercase">
+          <h1 className="mb-5 font-[700] text-4xl text-mainColor uppercase ">
             {product.title}
           </h1>
           <ReactStars
@@ -99,37 +146,30 @@ const SingleProduct = () => {
               Sizes
             </h3>
             <div className="flex flex-wrap gap-10">
-              <span className="px-4 py-2 bg-[#F0F0F0] shadow-sm rounded-md cursor-pointer">
-                small
-              </span>
-              <span className="px-4 py-2 bg-[#F0F0F0] shadow-sm rounded-md cursor-pointer">
-                large
-              </span>
-              <span className="px-4 py-2 bg-[#F0F0F0] shadow-sm rounded-md cursor-pointer">
-                XL
-              </span>
-              <span className="px-4 py-2 bg-[#F0F0F0] shadow-sm rounded-md cursor-pointer">
-                2XL
-              </span>
+              {product?.size?.map((prod, index) => (
+                <span onClick={() => setProductSize(prod)} key={index} className={`px-4 py-2 ${prod === productSize ? "bg-black text-white" : "bg-[#F0F0F0]"} shadow-sm rounded-md cursor-pointer capitalize`}>
+                  {prod}
+                </span>
+              ))}
             </div>
           </div>
           <hr />
           <div className="flex flex-wrap gap-10 my-5 items-center">
             <div className="flex gap-5 bg-[#F0F0F0] rounded-full px-5 py-2 cursor-pointer">
-              <button className="text-xl font-[500]" onClick={increment}>
+              <button className="text-xl font-[500]" onClick={increment} disabled={numOfItem === product.count}>
                 +
               </button>
               <button className="text-xl font-[500]">{numOfItem}</button>
               <button
                 className="text-xl font-[500]"
                 onClick={decrement}
-                disabled={numOfItem === 0}
+                disabled={numOfItem === 1}
               >
                 -
               </button>
             </div>
             <div>
-              <Button className="rounded-full w-[300px] bg-mainColor justify-center text-black font-[500] text-lg flex items-center gap-5">
+              <Button onClick={addToCart} className="rounded-full w-[300px] bg-mainColor justify-center text-black font-[500] text-lg flex items-center gap-5">
                 <IoIosCart color="black" size={30} /> Add To Cart
               </Button>
             </div>
@@ -138,7 +178,7 @@ const SingleProduct = () => {
       </div>
       {/* ========================================================================== */}
       {/* recommendations */}
-      <hr className="w-[50%] block border-[#0000001A] border-2 my-10 mx-auto rounded-full"/>
+      <hr className="w-[50%] block border-[#0000001A] border-2 my-10 mx-auto rounded-full" />
 
       <div className="my-16">
         <div className="flex justify-center items-center gap-5">
@@ -161,7 +201,6 @@ const SingleProduct = () => {
           />
         ))}
       </div>
-
     </div>
   );
 };

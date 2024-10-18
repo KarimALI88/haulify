@@ -18,10 +18,11 @@ const Products = ({
   isWishlisted,
 }) => {
   return (
-    <Card className="w-full max-w-[20rem] shadow-lg mt-5 max-h-max">
+    <Card className="w-full max-w-[20rem] shadow-lg mt-5 max-h-max dark:bg-gray-800 dark:text-white">
       <CardHeader floated={false} color="blue-gray">
-        <img src={image} alt={title} />
+        <img src={image} alt="Product" className="object-cover w-full h-full" />
         <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
+
         {offers && (
           <div className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
             {offers}
@@ -30,13 +31,14 @@ const Products = ({
       </CardHeader>
       <CardBody>
         <div className="mb-3 flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className="font-medium">
+          <Typography
+            variant="h5"
+            color="blue-gray"
+            className="font-medium dark:text-white"
+          >
             {title}
           </Typography>
-          <Typography
-            color="blue-gray"
-            className="flex items-center gap-1.5 font-normal"
-          >
+          <Typography className="flex items-center gap-1.5 font-normal dark:text-yellow-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -52,8 +54,14 @@ const Products = ({
             5.0
           </Typography>
         </div>
-        <Typography color="gray">{description}</Typography>
-        <Typography variant="h5" color="blue-gray" className="font-medium">
+        <Typography color="gray" className="dark:text-gray-300">
+          {description}
+        </Typography>
+        <Typography
+          variant="h5"
+          color="blue-gray"
+          className="font-medium dark:text-white"
+        >
           ${price}
         </Typography>
       </CardBody>
@@ -73,6 +81,7 @@ const Products = ({
         </IconButton>
         <Button size="lg" className="bg-deep-orange-600">
           <Link to={`/products/${id}`}>Details</Link>
+
         </Button>
       </CardFooter>
     </Card>

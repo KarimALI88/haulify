@@ -20,14 +20,14 @@ const Cart = () => {
   };
   const increment = (id) => {
     let incremented = cartItems.map((item) =>
-      id === item.id ? { ...item, count: item.count + 1 } : item
+      id === item.id ? { ...item, amount: item.amount + 1 } : item
     );
     setCartItems(incremented);
   };
   const decrement = (id) => {
     let decremented = cartItems.map((item) =>
-      id === item.id && item.count > 1
-        ? { ...item, count: item.count - 1 }
+      id === item.id && item.amount > 1
+        ? { ...item, amount: item.amount - 1 }
         : item
     );
     setCartItems(decremented);
@@ -86,7 +86,7 @@ const Cart = () => {
                   </div>
                   <p className="font-normal text-xl leading-8 text-gray-500 flex items-center justify-between">
                     <span className="w-full max-w-[200px] text-center">
-                      Price
+                      Delivery price
                     </span>
                     <span className="w-full max-w-[260px] text-center">
                       Quantity
@@ -122,26 +122,9 @@ const Cart = () => {
                   <span className="text-base font-normal text-[white] dark:text-gray-400">
                     Original price
                   </span>
-                  <span className="text-base font-medium text-gray-900 dark:text-white">
-                    $7,592.00
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-base font-normal text-[white] dark:text-gray-400">
-                    Savings
-                  </span>
-                  <span className="text-base font-medium text-green-200">
-                    -$299.00
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-base font-normal text-[white] dark:text-gray-400">
-                    Store Pickup
-                  </span>
-                  <span className="text-base font-medium text-gray-900 dark:text-white">
-                    $99
+                  <span className="text-base font-bold text-gray-900 dark:text-white">
+                    $
+                    {cartItems.reduce((prod1, prod2) => prod1 + prod2.price, 0)}
                   </span>
                 </div>
 
@@ -149,8 +132,17 @@ const Cart = () => {
                   <span className="text-base font-normal text-[white] dark:text-gray-400">
                     Tax
                   </span>
-                  <span className="text-base font-medium text-gray-900 dark:text-white">
-                    $799
+                  <span className="text-base font-bold text-green-200">
+                    $10
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-base font-normal text-[white] dark:text-gray-400">
+                    Delivery Charge
+                  </span>
+                  <span className="text-base font-bold text-gray-900 dark:text-white">
+                    $15
                   </span>
                 </div>
               </div>
@@ -162,8 +154,10 @@ const Cart = () => {
                 <span className="text-base font-bold text-gray-900 dark:text-white">
                   $
                   {cartItems
-                    .map((prod) => prod.count * prod.price)
-                    .reduce((prod1, prod2) => prod1 + prod2, 0)}
+                    .map((prod) => prod.amount * prod.price)
+                    .reduce((prod1, prod2) => prod1 + prod2, 0) +
+                    10 +
+                    15}
                 </span>
               </div>
             </div>

@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import Products from "./Products";
 import Sidebar from "../../../components/UserComponents/sidebar/Sidebar";
 
-const Mainproducts = () => {
-  const [products, setProducts] = useState([]);
-  const [productdata, setproductdata] = useState([]);
+const Mainproducts = ({products,setproductdata,productdata}) => {
   const [wishlistProducts, setWishlistProducts] = useState([]);
 
   const isProductWishlisted = (id) => {
@@ -45,15 +43,6 @@ const Mainproducts = () => {
     }).then(() => console.log("Removed from wishlist")).catch((error) => console.error("Error Removing from wishlist", error));
   };
 
-  const getproducts = () => {
-    axios({
-      method: "get",
-      url: `http://localhost:3000/products`,
-    }).then((info) => {
-      setProducts(info.data);
-      setproductdata(info.data);
-    });
-  };
 
   const getWishlistProducts = () => {
     axios({
@@ -65,15 +54,13 @@ const Mainproducts = () => {
   };
 
   useEffect(() => {
-    getproducts();
     getWishlistProducts();
   }, []);
 
   return (
     <div className="flex">
-
       <Sidebar products={products} setproductdata={setproductdata} />
-      <div className="flex flex-row flex-wrap justify-center items-center w-full p-8 overflow-y-scroll h-[610px]">
+      <div className="gap-5 flex flex-row flex-wrap justify-center items-center w-full p-8 overflow-y-scroll h-[610px]">
         {productdata.map((product, index) => (
           <Products
             toggleWishlist={toggleWishlist}

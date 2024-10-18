@@ -12,8 +12,8 @@ import { useCountries } from "use-react-countries";
 
 const CreateAdmin = () => {
   const { countries } = useCountries();
-  const [checkUserName, setCheckUserName] = useState(false);
-  const [checkAdminName, setCheckAdminName] = useState(false);
+  const [checkAdminFirstName, setCheckAdminFirstName] = useState(false);
+  const [checkAdminLastName, setCheckAdminLastName] = useState(false);
   const [checkPassword, setCheckPassword] = useState(false);
   const [checkGender, setCheckGender] = useState(false);
   const [checkEmail, setCheckEmail] = useState(false);
@@ -21,8 +21,8 @@ const CreateAdmin = () => {
   const [checkCountry, setCheckCountry] = useState(false);
   const [checkPhone, setCheckPhone] = useState(false);
   const [admin, setAdmin] = useState({
-    username: "",
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     gender: "",
     password: "",
@@ -32,14 +32,15 @@ const CreateAdmin = () => {
   });
 
   const reset = () => {
-    setCheckUserName(false);
     setCheckEmail(false);
     setCheckGender(false);
     setCheckPassword(false);
     setCheckConfirmPassword(false);
     setCheckCountry(false);
     setCheckPhone(false);
-    setCheckAdminName(false);
+    setCheckAdminFirstName(false);
+    setCheckAdminLastName(false);
+
   };
 
   // _____________________________________________________________________
@@ -51,13 +52,13 @@ const CreateAdmin = () => {
   // _____________________________________________________________________
 
   const handleForm = () => {
-    if (admin.name == "") {
+    if (admin.firstname == "") {
       reset();
-      check(setCheckAdminName);
+      check(setCheckAdminFirstName);
     }
-    else if (admin.username == "") {
+    else if (admin.lastname == "") {
       reset();
-      check(setCheckUserName);
+      check(setCheckAdminLastName);
     } else if (!admin.email.includes("@haulify.eg")) {
       reset();
       check(setCheckEmail);
@@ -77,13 +78,14 @@ const CreateAdmin = () => {
       reset();
       check(setCheckPhone);
     } else {
-      const { confirmPassword, ...dataToSend } = admin;
+      const { confirmPassword, firstname, lastname, ...dataToSend } = admin;
 
       axios({
         method: "post",
         url: "http://localhost:3000/users",
         data: {
           ...dataToSend,
+          username: admin.firstname + " " + admin.lastname,
           role: "admin",
         },
       });
@@ -114,20 +116,20 @@ const CreateAdmin = () => {
               color="blue-gray"
               className="mb-2 font-medium"
             >
-              Admin Name
+              Firstname
             </Typography>
             <Input
               size="lg"
-              placeholder="Emma Watson"
+              placeholder="Emma"
               labelProps={{
                 className: "hidden",
               }}
-              value={admin.name}
-              error={checkAdminName}
+              value={admin.firstname}
+              error={checkAdminFirstName}
               onChange={(e) =>
                 setAdmin({
                   ...admin,
-                  name: e.target.value,
+                  firstname: e.target.value,
                 })
               }
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
@@ -139,21 +141,21 @@ const CreateAdmin = () => {
               color="blue-gray"
               className="mb-2 font-medium"
             >
-              Username
+              Lastname
             </Typography>
             <Input
               size="lg"
-              placeholder="emmawatson02"
+              placeholder="Watson"
               labelProps={{
                 className: "hidden",
               }}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
-              value={admin.username}
-              error={checkUserName}
+              value={admin.lastname}
+              error={checkAdminLastName}
               onChange={(e) =>
                 setAdmin({
                   ...admin,
-                  username: e.target.value,
+                  lastname: e.target.value,
                 })
               }
             />
@@ -265,6 +267,13 @@ const CreateAdmin = () => {
 
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Country
+            </Typography>
             <Select
               size="lg"
               label="Select Country"
@@ -328,12 +337,12 @@ const CreateAdmin = () => {
         </div>
 
         <div className="flex justify-center items-center">
-            <Button
-              className="w-[10rem] mx-auto mt-10 bg-mainColor"
-              onClick={() => handleForm()}
-            >
-              Create
-            </Button>
+          <Button
+            className="w-[10rem] mx-auto mt-10 bg-mainColor"
+            onClick={() => handleForm()}
+          >
+            Create
+          </Button>
         </div>
       </div>
     </div>
