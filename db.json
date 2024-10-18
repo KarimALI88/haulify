@@ -26,11 +26,31 @@
         "large",
         "x-large"
       ],
-      "count": 500,
+      "count": 5,
       "category": "male"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": 1,
+      "title": "short",
+      "description": "hello world",
+      "price": 900,
+      "offers": "30%",
+      "rate": 4,
+      "image": "https://placehold.co/300",
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "x-large"
+      ],
+      "count": 5,
+      "category": "male",
+      "amount": 3,
+      "choosenSize": "large"
+    }
+  ],
   "wishlist": [
     {
       "id": 1,

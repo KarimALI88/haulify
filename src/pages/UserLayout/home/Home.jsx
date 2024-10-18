@@ -6,7 +6,7 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import CategoryCard from "../../../components/UserComponents/category/CategoryCard";
 import menCategory from "../../../assets/menCategory.png";
 import womenCategory from "../../../assets/women.png";
-const Home = () => {
+const Home = ({products}) => {
   
   const [newArrivals, setNewArrivals] = useState([
     {
@@ -58,7 +58,7 @@ const Home = () => {
           <BsStars />
         </h2>
         <div className="flex justify-start items-start flex-wrap px-16 gap-10">
-          {newArrivals.map((arrive, index) => (
+          {products.slice(0,4).map((arrive, index) => (
             <Product
               key={index}
               name={arrive.name}
@@ -77,14 +77,14 @@ const Home = () => {
           <GiTakeMyMoney />
         </h2>
         <div className="flex justify-start items-start flex-wrap px-16 gap-10">
-          {newArrivals.map((arrive, index) => (
-            <Product
-              key={index}
-              name={arrive.name}
-              image={arrive.image}
-              price={arrive.price}
-              rate={arrive.rate}
-            />
+          {products.map((arrive, index) => (
+            arrive.offers && <Product
+            key={index}
+            name={arrive.name}
+            image={arrive.image}
+            price={arrive.price}
+            rate={arrive.rate}
+          />
           ))}
         </div>
       </div>
