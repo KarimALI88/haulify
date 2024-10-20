@@ -60,7 +60,7 @@ const Mainproducts = ({products,setproductdata,productdata}) => {
   return (
     <div className="flex">
       <Sidebar products={products} setproductdata={setproductdata} />
-      <div className="gap-5 flex flex-row flex-wrap justify-center items-center w-full p-8 overflow-y-scroll h-[610px]">
+      <div className="gap-5 flex flex-row flex-wrap justify-center items-center w-full p-8 overflow-y-auto h-[620px]">
         {productdata.map((product, index) => (
           <Products
             toggleWishlist={toggleWishlist}

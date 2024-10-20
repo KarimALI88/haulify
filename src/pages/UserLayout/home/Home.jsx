@@ -5,7 +5,7 @@ import { BsStars } from "react-icons/bs";
 import { GiTakeMyMoney } from "react-icons/gi";
 import CategoryCard from "../../../components/UserComponents/category/CategoryCard";
 import menCategory from "../../../assets/menCategory.png";
-import womenCategory from "../../../assets/women.png";
+import womenCategory from "../../../assets/women1.png";
 const Home = ({products}) => {
   
   const [newArrivals, setNewArrivals] = useState([
