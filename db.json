@@ -9,6 +9,16 @@
       "gender": "male",
       "phone": "01111111111",
       "country": "Egypt"
+    },
+    {
+      "id": 2,
+      "username": "Amr",
+      "email": "Amr@gmail.com",
+      "password": "1234",
+      "role": "admin",
+      "gender": "male",
+      "phone": "01111111111",
+      "country": "Egypt"
     }
   ],
   "products": [

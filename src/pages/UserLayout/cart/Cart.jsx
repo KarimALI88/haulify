@@ -7,7 +7,7 @@ import {
 } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import { BsCart4 } from "react-icons/bs";
-import ItemCart from "../../../components/UserComponents/item/ItemCart";
+import  ItemCart from "../../../components/UserComponents/item/ItemCart";
 import axios from "axios";
 
 const Cart = () => {

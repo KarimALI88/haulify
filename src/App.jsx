@@ -11,6 +11,33 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [productdata, setproductdata] = useState([]);
   const [isChanged, setIsChanged] = useState(false);
+  const [alluser, setalluser] = useState([]);
+  const [islogin, setislogin] = useState(localStorage.cn ?true :false);
+  const [user, setUser] = useState(null);
+
+  const getAlluser = () => {
+    axios({
+      method: "get",
+      url: `${import.meta.env.VITE_LINK_API}/users`,
+    }).then((info) => {
+      setalluser(info.data);
+    });
+  };
+
+  const getUserDetails = () => {
+    axios({
+      method: "get",
+      url: `${import.meta.env.VITE_LINK_API}/users/${localStorage.cn}`,
+    }).then((info) => setUser(info.data));
+  };
+  useEffect(() => {
+    if(islogin){
+    getUserDetails();
+}}, [islogin]);
+
+  useEffect(() => {
+    getAlluser();
+  },[]);
   const getproducts = () => {
     axios({
       method: "get",
@@ -44,11 +71,15 @@ const App = () => {
           path="/*"
           element={
             <UserLayout
+              islogin={islogin}
+              setislogin={setislogin}
+              alluser={alluser}
               theme={theme}
               setTheme={setTheme}
               products={products}
               productdata={productdata}
               setproductdata={setproductdata}
+              user={user}
             />
           }
         />
