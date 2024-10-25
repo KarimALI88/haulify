@@ -7,7 +7,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme;
+    }
+    return 'light';
+  });
   const [products, setProducts] = useState([]);
   const [productdata, setproductdata] = useState([]);
   const [isChanged, setIsChanged] = useState(false);

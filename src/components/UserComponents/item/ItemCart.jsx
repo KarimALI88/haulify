@@ -2,7 +2,7 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 
 const ItemCart = ({
-  item: { id, title, description, price, count, image },
+  item: { id, title, description, price, amount, image },
   increment,
   decrement,
   remov,
@@ -42,12 +42,12 @@ const ItemCart = ({
         <div className="border-gray-400 border rounded-3xl flex items-center justify-center lg:justify-start">
           <button
             onClick={() => decrement(id)}
-            disabled={count === 1}
+            disabled={amount === 1}
             className="py-2 px-4 border-r-2 text-lg rounded-s-3xl hover:bg-gray-200 disabled:bg-gray-200 transition-all duration-300"
           >
             -
           </button>
-          <span className="py-2 px-4">{count}</span>
+          <span className="py-2 px-4">{amount}</span>
           <button
             onClick={() => increment(id)}
             className="py-2 px-4 border-l-2 text-lg rounded-e-3xl hover:bg-gray-200 transition-all duration-300"
@@ -57,7 +57,7 @@ const ItemCart = ({
         </div>
 
         <h6 className="text-indigo-600 font-manrope font-bold text-xl leading-9 w-full max-w-[176px] text-center">
-          ${price * count + 15}
+          ${price * amount + 15}
         </h6>
       </div>
       <button
