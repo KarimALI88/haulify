@@ -7,12 +7,44 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme : 'light';
+  });
   const [products, setProducts] = useState([]);
   const [productdata, setproductdata] = useState([]);
   const [isChanged, setIsChanged] = useState(false);
   const [userInfo, setUserInfo] = useState([]);
   const [adminInfo, setAdminInfo] = useState([]);
+  const [alluser, setalluser] = useState([]);
+  const [islogin, setislogin] = useState(localStorage.cn ? true : false);
+  const [user, setUser] = useState(null);
+
+  const getAlluser = () => {
+    axios({
+      method: "get",
+      url: `${import.meta.env.VITE_LINK_API}/users`,
+    }).then((info) => {
+      setalluser(info.data);
+    });
+  };
+
+  const getUserDetails = () => {
+    axios({
+      method: "get",
+      url: `${import.meta.env.VITE_LINK_API}/users/${localStorage.cn}`,
+    }).then((info) => setUser(info.data));
+  };
+
+  useEffect(() => {
+    if (islogin) {
+      getUserDetails();
+    }
+  }, [islogin]);
+
+  useEffect(() => {
+    getAlluser();
+  }, []);
 
   const getproducts = () => {
     axios({
@@ -44,12 +76,12 @@ const App = () => {
   useEffect(() => {
     getproducts();
   }, [isChanged]);
+
   useEffect(() => {
     getAllUsersAndAdmins("user");
-  });
-  useEffect(() => {
     getAllUsersAndAdmins("admin");
-  });
+  }, []);
+
   useEffect(() => {
     localStorage.theme = theme;
     if (
@@ -70,11 +102,15 @@ const App = () => {
           path="/*"
           element={
             <UserLayout
+              islogin={islogin}
+              setislogin={setislogin}
+              alluser={alluser}
               theme={theme}
               setTheme={setTheme}
               products={products}
               productdata={productdata}
               setproductdata={setproductdata}
+              user={user}
             />
           }
         />

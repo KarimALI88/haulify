@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   Collapse,
@@ -12,9 +12,10 @@ import { IoIosCart } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
+import Userprofile from "../userprofile/Userprofile";
 
 
-const Header = ({ theme, setTheme }) => {
+const Header = ({ theme, setTheme, islogin,setislogin,user }) => {
   const [openNav, setOpenNav] = React.useState(false);
   React.useEffect(() => {
     window.addEventListener(
@@ -113,12 +114,17 @@ const Header = ({ theme, setTheme }) => {
                   className=" rounded-md font-[600] hover:text-mainColor text-[#0B192C] dark:text-[white] "
                 />
               </Typography>
-              <Button
-                size="lg"
-                className="hidden lg:inline-block bg-mainColor text-black font-[600]"
-              >
-                <Link to="/login">Sign in</Link>
-              </Button>
+
+              {islogin ? (
+                <Userprofile islogin={islogin} setislogin={setislogin} user={user} />
+              ) : (
+                <Button
+                  size="lg"
+                  className="hidden lg:inline-block bg-mainColor text-black font-[600]"
+                >
+                  <Link to="/login">Sign in</Link>
+                </Button>
+              )}
             </div>
             <IconButton
               variant="text"
@@ -165,8 +171,8 @@ const Header = ({ theme, setTheme }) => {
             <Button
               fullWidth
               variant="gradient"
-              size="lg"
-              className="hidden lg:inline-block bg-mainColor text-black font-[600]"
+              size="md"
+              className=" bg-mainColor text-black font-[600]"
             >
               <Link to="/login">Sign in</Link>
             </Button>

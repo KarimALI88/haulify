@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ alluser, setislogin }) => {
   const navigate = useNavigate();
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
@@ -23,33 +23,53 @@ const Login = () => {
 
   const handleform = (e) => {
     e.preventDefault();
+
+    const loginUser = alluser.find(
+      ({ email, password }) =>
+        user.username === email && user.password === password
+    );
+
+    if (loginUser) {
+      localStorage.cn = loginUser.id;
+      setislogin(true);
+      navigate("/");
+    }
+
+    if (loginUser.role === "admin") {
+      navigate("/admin");
+    } else {
+      navigate("/");
+    }
+
     if (user.username === "") {
       reset();
       setcheckusername(true);
+      return;
     } else if (user.password === "") {
       reset();
       setcheckpassword(true);
+      return;
     } else {
       const userinfo = {
         name: user.username,
         password: user.password,
       };
-      axios({
-        method: "post",
-        url: `http://localhost:3000/users`,
-        data: userinfo,
-      }).then(() => {
-        setuser({
-          username: "",
-          password: "",
-        });
-      });
+      // axios({
+      //   method: "post",
+      //   url: `http://localhost:3000/users`,
+      //   data: userinfo,
+      // }).then(() => {
+      //   setuser({
+      //     username: "",
+      //     password: "",
+      //   });
+      // });
     }
   };
 
   return (
     <section className="grid text-center h-screen items-center p-8 dark:bg-gray-900">
-      <div>
+      <div className="w-full md:w-2/3 lg:w-1/2 mx-auto px-8">
         <Typography
           variant="h3"
           color="blue-gray"
@@ -79,7 +99,7 @@ const Login = () => {
               size="lg"
               type="email"
               name="email"
-              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:border-t-gray-600"
+              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:border-t-gray-600 dark:bg-gray-800 dark:text-gray-200"
             />
           </div>
           <div className="mb-6">
@@ -96,7 +116,7 @@ const Login = () => {
               error={checkpassword}
               value={user.password}
               size="lg"
-              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:border-t-gray-600"
+              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 dark:border-t-gray-600 dark:bg-gray-800 dark:text-gray-200"
               type={passwordShown ? "text" : "password"}
               icon={
                 <i onClick={togglePasswordVisiblity}>
@@ -116,7 +136,7 @@ const Login = () => {
             className="mt-6 bg-deep-orange-600 dark:bg-deep-orange-500"
             fullWidth
           >
-            sign in
+            Sign In
           </Button>
 
           <Typography

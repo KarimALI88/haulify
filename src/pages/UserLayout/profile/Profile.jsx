@@ -1,29 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom"; 
 
 const Profile = () => {
+  const {id} = useParams(); 
   const [userInfo, setUserInfo] = useState({});
   const [goEdit, setGoEdit] = useState(true);
   const [profileImage, setProfileImage] = useState(
     "https://via.placeholder.com/150"
   );
   const fileInputRef = useRef(null);
-  const getUserData = () => {
-    axios({
-      method: "get",
-      url: "http://localhost:3000/users",
-    }).then((res) => {
-      res.data.map((user) =>
-        // user.id === id of logged user ?
-        setUserInfo(user)
-      );
-    });
-  };
 
-  const handleChange = (e, toBeChanged) => {
-    const value = e.target.value;
-    setUserInfo({ ...userInfo, [toBeChanged]: value });
-  };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -31,9 +18,14 @@ const Profile = () => {
       setProfileImage(imageUrl);
     }
   };
-
+  
   const triggerFileInput = () => {
     fileInputRef.current.click();
+  };
+  
+  const handleChange = (e, toBeChanged) => {
+    const value = e.target.value;
+    setUserInfo({ ...userInfo, [toBeChanged]: value });
   };
 
   const saveChanges = () => {
@@ -45,10 +37,19 @@ const Profile = () => {
     });
   };
 
+  const getUserData = () => {
+    axios({
+      method: "get",
+      url: `http://localhost:3000/users/${id}`,
+    }).then((res) => {
+        setUserInfo(res.data)
+    });
+  };
+
   useEffect(() => {
     getUserData();
   }, []);
-
+  
   return (
     <div className="flex items-center justify-center min-h-screen ">
       <div className="bg-gray-100 shadow-md rounded-lg p-8 max-w-[40rem] w-full">
@@ -81,8 +82,8 @@ const Profile = () => {
             id="username"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter your username"
-            value={userInfo.name || ""}
-            onChange={(e) => handleChange(e, "name")}
+            value={userInfo.username || ""}
+            onChange={(e) => handleChange(e, "username")}
             disabled={goEdit}
           />
         </div>

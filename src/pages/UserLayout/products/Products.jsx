@@ -1,5 +1,6 @@
 import React from "react";
 import { FiHeart } from "react-icons/fi";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -12,7 +13,9 @@ import {
 } from "@material-tailwind/react";
 
 const Products = ({
-  product: { description, image, offers, price, title,id },
+  product: { description, image, offers, price, title, id },
+  toggleWishlist,
+  isWishlisted,
 }) => {
   return (
     <Card className="w-full max-w-[20rem] shadow-lg mt-5 max-h-max dark:bg-gray-800 dark:text-white">
@@ -68,8 +71,13 @@ const Products = ({
           color="red"
           variant="text"
           className="!absolute right-4 rounded-full"
+          onClick={() => toggleWishlist(id)}
         >
-          <FiHeart className="h-6 w-6" />
+          {isWishlisted ? (
+            <FaHeart className="h-6 w-6" />
+          ) : (
+            <FiHeart className="h-6 w-6" />
+          )}
         </IconButton>
         <Button size="lg" className="bg-deep-orange-600">
           <Link to={`/products/${id}`}>Details</Link>
