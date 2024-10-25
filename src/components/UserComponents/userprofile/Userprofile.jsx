@@ -13,6 +13,7 @@ import {
   PowerIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 const Userprofile = ({ setislogin,user }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +45,7 @@ const Userprofile = ({ setislogin,user }) => {
           className="flex items-center gap-2 rounded"
         >
           <UserCircleIcon className="h-4 w-4" strokeWidth={2} />
-          <Typography as="span" variant="small" className="font-normal">
+          <Typography as={Link} to={`/profile/${user?.id}`} variant="small" className="font-normal">
             My Profile
           </Typography>
         </MenuItem>

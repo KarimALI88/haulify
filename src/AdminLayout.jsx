@@ -18,6 +18,7 @@ const AdminLayout = ({
   setIsChanged,
   userInfo,
   adminInfo,
+  setRefresh
 }) => {
   return (
     <div className="bg-[#EDEEF2] flex flex-col md:flex-row w-full justify-between">
@@ -45,12 +46,13 @@ const AdminLayout = ({
           element={<UpdateProduct setIsChanged={setIsChanged} />}
         />
         {/* =========================================================================== */}
-        <Route path="/admins" element={<ViewAdmins adminInfo={adminInfo} />} />
+        <Route path="/admins" element={<ViewAdmins adminInfo={adminInfo} setRefresh={setRefresh}/>} />
         <Route
           path="/create-admin"
-          element={<CreateAdmin adminInfo={adminInfo} />}
+          element={<CreateAdmin adminInfo={adminInfo} setRefresh={setRefresh}/>}
         />
-        <Route path="/update-admin/:id" element={<UpdateAdmin />} />
+              setRefresh={setRefresh}
+        <Route path="/update-admin/:id" element={<UpdateAdmin setRefresh={setRefresh}/>} />
         {/* =========================================================================== */}
         <Route path="/" element={<Dashboard />} />
         {/* =========================================================================== */}

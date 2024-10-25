@@ -3,6 +3,7 @@ import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from 'react-toastify'
 
 const Login = ({ alluser, setislogin }) => {
   const navigate = useNavigate();
@@ -10,9 +11,9 @@ const Login = ({ alluser, setislogin }) => {
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
   const [user, setuser] = useState({
     username: "",
-    password: "",
+    password: "", 
   });
-
+  const [loading, setLoading] = useState(false)
   const [checkusername, setcheckusername] = useState(false);
   const [checkpassword, setcheckpassword] = useState(false);
 
@@ -23,47 +24,44 @@ const Login = ({ alluser, setislogin }) => {
 
   const handleform = (e) => {
     e.preventDefault();
-
+    setLoading(true)
     const loginUser = alluser.find(
       ({ email, password }) =>
         user.username === email && user.password === password
     );
 
-    if (loginUser) {
-      localStorage.cn = loginUser.id;
-      setislogin(true);
-      navigate("/");
-    }
-
-    if (loginUser.role === "admin") {
-      navigate("/admin");
-    } else {
-      navigate("/");
-    }
-
+    
     if (user.username === "") {
+      setLoading(false)
       reset();
       setcheckusername(true);
+      toast.error("email is required")
       return;
     } else if (user.password === "") {
+      setLoading(false)
       reset();
       setcheckpassword(true);
+      toast.error("password is required")
       return;
     } else {
+      setLoading(false)
       const userinfo = {
         name: user.username,
         password: user.password,
       };
-      // axios({
-      //   method: "post",
-      //   url: `http://localhost:3000/users`,
-      //   data: userinfo,
-      // }).then(() => {
-      //   setuser({
-      //     username: "",
-      //     password: "",
-      //   });
-      // });
+      if (loginUser) {
+        if (loginUser.role === "admin") {
+          navigate("/admin");
+        }else{
+          navigate("/");
+        }
+        localStorage.cn = loginUser.id;
+        setislogin(true);
+        toast.success("Login successfully")
+      }else {
+        toast.error("wrong inputs")
+      }
+  
     }
   };
 
@@ -136,7 +134,7 @@ const Login = ({ alluser, setislogin }) => {
             className="mt-6 bg-deep-orange-600 dark:bg-deep-orange-500"
             fullWidth
           >
-            Sign In
+            {loading ? "loading...." : "Sign In"}
           </Button>
 
           <Typography

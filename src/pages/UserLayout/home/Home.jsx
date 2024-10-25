@@ -6,8 +6,8 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import CategoryCard from "../../../components/UserComponents/category/CategoryCard";
 import menCategory from "../../../assets/menCategory.png";
 import womenCategory from "../../../assets/women1.png";
-const Home = ({products}) => {
-  
+import { Link } from "react-router-dom";
+const Home = ({ products }) => {
   const [newArrivals, setNewArrivals] = useState([
     {
       name: "T-Shirt",
@@ -58,13 +58,14 @@ const Home = ({products}) => {
           <BsStars />
         </h2>
         <div className="flex justify-start items-start flex-wrap px-16 gap-10">
-          {products.slice(0,4).map((arrive, index) => (
+          {products.slice(0, 4).map((arrive, index) => (
             <Product
               key={index}
-              name={arrive.name}
+              name={arrive.title}
               image={arrive.image}
               price={arrive.price}
               rate={arrive.rate}
+              id={arrive.id}
             />
           ))}
         </div>
@@ -77,15 +78,19 @@ const Home = ({products}) => {
           <GiTakeMyMoney />
         </h2>
         <div className="flex justify-start items-start flex-wrap px-16 gap-10">
-          {products.map((arrive, index) => (
-            arrive.offers && <Product
-            key={index}
-            name={arrive.name}
-            image={arrive.image}
-            price={arrive.price}
-            rate={arrive.rate}
-          />
-          ))}
+          {products.map(
+            (arrive, index) =>
+              arrive.offers && (
+                <Product
+                  key={index}
+                  name={arrive.title}
+                  image={arrive.image}
+                  price={arrive.price}
+                  rate={arrive.rate}
+                  id={arrive.id}
+                />
+              )
+          )}
         </div>
       </div>
       {/* ========================================================================================= */}
@@ -95,10 +100,14 @@ const Home = ({products}) => {
         </h2>
         <div className="flex gap-5 flex-wrap">
           <div className="w-full sm:w-[35%] cursor-pointer hover:rotate-12 ease-in-out duration-1000">
-            <CategoryCard name={"Men"} image={menCategory} />
+            <Link to={"/products"}>
+              <CategoryCard name={"Men"} image={menCategory} />
+            </Link>
           </div>
           <div className="w-full sm:w-[60%] cursor-pointer hover:-rotate-12 ease-in-out duration-1000">
-            <CategoryCard name={"Women"} image={womenCategory} />
+            <Link to={"/products"}>
+              <CategoryCard name={"Women"} image={womenCategory} />
+            </Link>
           </div>
         </div>
       </div>

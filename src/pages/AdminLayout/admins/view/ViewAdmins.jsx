@@ -7,7 +7,7 @@ import { CiLogin } from "react-icons/ci";
 import { MdDeleteForever, MdOutlineModeEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 
-const ViewAdmins = ({adminInfo}) => {
+const ViewAdmins = ({adminInfo, setRefresh}) => {
 
   const deleteAdmin = (id) => {
     Swal.fire({
@@ -31,6 +31,7 @@ const ViewAdmins = ({adminInfo}) => {
               method: "delete",
               url: `http://localhost:3000/users/${admin.id}`,
             });
+            setRefresh(prevState => !prevState)
           }
         });
       }

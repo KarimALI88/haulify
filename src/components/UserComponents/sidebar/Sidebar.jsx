@@ -73,7 +73,7 @@ const Sidebar = ({ products, setproductdata }) => {
 
   return (
     <div className="flex">
-      <div className="hidden lg:flex flex-col w-[20rem] rounded-lg text-black h-[94vh] min-w-[15rem] p-4 shadow-[1px_1px_6px_6px_rgba(0,0,0,0.3)]  m-5 z-10 border-2 border-black ">
+      <div className="hidden lg:flex flex-col w-[20rem] rounded-lg text-black h-[94vh] min-w-[15rem] p-4 shadow-lg  m-5 z-10 border-2 border-black ">
         <div className="p-2 mb-4">
           <Input
             icon={<MagnifyingGlassIcon className="h-5 w-5" />}

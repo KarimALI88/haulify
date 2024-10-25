@@ -51,16 +51,16 @@ const Profile = () => {
   }, []);
   
   return (
-    <div className="flex items-center justify-center min-h-screen ">
+    <div className="flex items-center justify-center min-h-screen my-20">
       <div className="bg-gray-100 shadow-md rounded-lg p-8 max-w-[40rem] w-full">
         <div className="flex flex-col items-center mb-4">
           <h2 className="text-2xl font-bold mb-6">User Profile</h2>
-          <img
+          {/* <img
             src={profileImage}
             alt="Profile"
             className="rounded-full w-32 h-32 mb-4"
             onClick={triggerFileInput}
-          />
+          /> */}
           <input
             type="file"
             ref={fileInputRef}

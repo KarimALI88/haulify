@@ -8,7 +8,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from 'react-toastify'
 
-const SingleProduct = () => {
+const SingleProduct = ({setRefresh, products}) => {
   const [product, setProduct] = useState({
     title: "One Life Graphic T-shirt",
     description:
@@ -95,6 +95,7 @@ const SingleProduct = () => {
         }
       }).then(data => {
         console.log("data submitted", data)
+        setRefresh(prevState => !prevState)
         toast.success("added successfully")
         navigate("/cart")
       }).catch(toast.error("added before"))
@@ -169,7 +170,8 @@ const SingleProduct = () => {
               </button>
             </div>
             <div>
-              <Button onClick={addToCart} className="rounded-full w-[300px] bg-mainColor justify-center text-black font-[500] text-lg flex items-center gap-5">
+              {productSize.length === 0 && <p className="text-lg font-medium">you must choose size</p>}
+              <Button onClick={addToCart} disabled={productSize.length === 0} className="rounded-full w-[300px] bg-mainColor justify-center text-black font-[500] text-lg flex items-center gap-5">
                 <IoIosCart color="black" size={30} /> Add To Cart
               </Button>
             </div>
@@ -191,13 +193,14 @@ const SingleProduct = () => {
       </div>
 
       <div className="flex justify-start items-start flex-wrap px-16 gap-10">
-        {newArrivals.map((arrive, index) => (
+        {products.slice(0,4).map((arrive, index) => (
           <Product
             key={index}
-            name={arrive.name}
+            name={arrive.title}
             image={arrive.image}
             price={arrive.price}
             rate={arrive.rate}
+            id={arrive.id}
           />
         ))}
       </div>

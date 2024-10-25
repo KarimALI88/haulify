@@ -6,11 +6,12 @@ import {
   Select,
   Option,
   Button,
+  
 } from "@material-tailwind/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCountries } from "use-react-countries";
 
-const UpdateAdmin = () => {
+const UpdateAdmin = ({setRefresh}) => {
   const { countries } = useCountries();
   const { id } = useParams();
   const [adminData, setAdminData] = useState({ firstname: "", lastname: "" });
@@ -57,6 +58,7 @@ const getTheAdmin = () => {
       },
     });
     navigate("/admin/admins");
+    setRefresh(prevState => !prevState) 
   };
 
   // _____________________________________________________________________

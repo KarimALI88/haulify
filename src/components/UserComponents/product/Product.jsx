@@ -1,13 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ReactStars from "react-stars";
 
-const Product = ({ image, name, rate, price }) => {
+const Product = ({ image, name, rate, price,id }) => {
   return (
     <div className="w-[260px] rounded-lg mx-auto my-5">
       <div className="mb-5">
         <img src={image} alt={name} className="w-[100%] h-[280px] rounded-xl shadow-xl" />
       </div>
-      <h3 className="font-[700] text-[20px] my-2 text-mainColor">{name}</h3>
+      <Link to={`/products/${id}`}><h3 className="font-[700] text-[20px] my-2 text-mainColor">{name}</h3></Link>
+      
       <ReactStars
         count={5}
         size={24}

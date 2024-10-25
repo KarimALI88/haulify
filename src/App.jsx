@@ -19,6 +19,8 @@ const App = () => {
   const [alluser, setalluser] = useState([]);
   const [islogin, setislogin] = useState(localStorage.cn ? true : false);
   const [user, setUser] = useState(null);
+  const [cartLength, setCartLength] = useState(0)
+  const [refresh, setRefresh] = useState(false)
 
   const getAlluser = () => {
     axios({
@@ -28,6 +30,19 @@ const App = () => {
       setalluser(info.data);
     });
   };
+
+  const getCartItems = () => {
+    axios({
+      method: "get",
+      url: `${import.meta.env.VITE_LINK_API}/cart`,
+    }).then((info) => {
+      setCartLength(info.data.length);
+    });
+  };
+
+  useEffect(() => {
+    getCartItems()
+  }, [refresh])
 
   const getUserDetails = () => {
     axios({
@@ -80,7 +95,7 @@ const App = () => {
   useEffect(() => {
     getAllUsersAndAdmins("user");
     getAllUsersAndAdmins("admin");
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
     localStorage.theme = theme;
@@ -111,6 +126,8 @@ const App = () => {
               productdata={productdata}
               setproductdata={setproductdata}
               user={user}
+              cartItems={cartLength}
+              setRefresh={setRefresh}
             />
           }
         />
@@ -124,6 +141,7 @@ const App = () => {
               setIsChanged={setIsChanged}
               userInfo={userInfo}
               adminInfo={adminInfo}
+              setRefresh={setRefresh}
             />
           }
         />

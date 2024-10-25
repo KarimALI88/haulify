@@ -9,8 +9,9 @@ import {
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { useCountries } from "use-react-countries";
+import { toast } from "react-toastify";
 
-const CreateAdmin = ({adminInfo}) => {
+const CreateAdmin = ({ adminInfo, setRefresh }) => {
   const { countries } = useCountries();
   const [checkAdminFirstName, setCheckAdminFirstName] = useState(false);
   const [checkAdminLastName, setCheckAdminLastName] = useState(false);
@@ -40,7 +41,6 @@ const CreateAdmin = ({adminInfo}) => {
     setCheckPhone(false);
     setCheckAdminFirstName(false);
     setCheckAdminLastName(false);
-
   };
 
   // _____________________________________________________________________
@@ -55,29 +55,40 @@ const CreateAdmin = ({adminInfo}) => {
     if (admin.firstname == "") {
       reset();
       check(setCheckAdminFirstName);
-    }
-    else if (admin.lastname == "") {
+      toast.error("first name required");
+    } else if (admin.lastname == "") {
       reset();
       check(setCheckAdminLastName);
-    } else if (!admin.email.includes("@haulify.eg") ||
-      adminInfo.some((existingAdmin) => existingAdmin.email === admin.email)) {
+      toast.error("last name required");
+    } else if (
+      !admin.email.includes("@haulify.eg") ||
+      adminInfo.some((existingAdmin) => existingAdmin.email === admin.email)
+    ) {
       reset();
       check(setCheckEmail);
+      toast.error(
+        "email must contain @haulify.eg and must didn't enrolled before"
+      );
     } else if (admin.gender.checked == false) {
       reset();
       check(setCheckGender);
+      toast.error("gendere required");
     } else if (admin.password == "" || admin.password.length < 8) {
       reset();
       check(setCheckPassword);
+      toast.error("password must be graeter than 8");
     } else if (admin.confirmPassword !== admin.password) {
       reset();
       check(setCheckConfirmPassword);
+      toast.error("confirmed password didn't match password");
     } else if (admin.country == "") {
       reset();
       check(setCheckCountry);
+      toast.error("country required");
     } else if (admin.phone == "") {
       reset();
       check(setCheckPhone);
+      toast.error("phone required");
     } else {
       const { confirmPassword, firstname, lastname, ...dataToSend } = admin;
 
@@ -89,7 +100,15 @@ const CreateAdmin = ({adminInfo}) => {
           username: admin.firstname + " " + admin.lastname,
           role: "admin",
         },
-      });
+      })
+        .then((data) => {
+          toast.success("created successfully");
+          setRefresh((prevState) => !prevState);
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("something wrong");
+        });
       backToAdmins();
     }
   };
@@ -113,7 +132,7 @@ const CreateAdmin = ({adminInfo}) => {
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
             <Typography
-              variant="small"
+              variant="h5"
               color="blue-gray"
               className="mb-2 font-medium"
             >
@@ -138,7 +157,7 @@ const CreateAdmin = ({adminInfo}) => {
           </div>
           <div className="w-full">
             <Typography
-              variant="small"
+              variant="h5"
               color="blue-gray"
               className="mb-2 font-medium"
             >
@@ -166,7 +185,7 @@ const CreateAdmin = ({adminInfo}) => {
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
             <Typography
-              variant="small"
+              variant="h5"
               color="blue-gray"
               className="mb-2 font-medium"
             >
@@ -192,7 +211,7 @@ const CreateAdmin = ({adminInfo}) => {
           </div>
           <div className="w-full">
             <Typography
-              variant="small"
+              variant="h5"
               color="blue-gray"
               className="mb-2 font-medium"
             >
@@ -243,7 +262,7 @@ const CreateAdmin = ({adminInfo}) => {
             />
           </div>
           <div className="w-full">
-            <Typography variant="sm" color="blue-gray" className="mb-2">
+            <Typography variant="h5" color="blue-gray" className="mb-2">
               Confirm Password
             </Typography>
             <Input
@@ -269,7 +288,7 @@ const CreateAdmin = ({adminInfo}) => {
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
             <Typography
-              variant="small"
+              variant="h5"
               color="blue-gray"
               className="mb-2 font-medium"
             >
@@ -312,7 +331,7 @@ const CreateAdmin = ({adminInfo}) => {
           </div>
           <div className="w-full">
             <Typography
-              variant="small"
+              variant="h5"
               color="blue-gray"
               className="mb-2 font-medium"
             >
@@ -340,7 +359,7 @@ const CreateAdmin = ({adminInfo}) => {
         <div className="flex justify-center items-center">
           <Button
             className="w-[10rem] mx-auto mt-10 bg-mainColor"
-            onClick={() => handleForm()}
+            onClick={handleForm}
           >
             Create
           </Button>
@@ -348,6 +367,6 @@ const CreateAdmin = ({adminInfo}) => {
       </div>
     </div>
   );
-}
+};
 
 export default CreateAdmin;

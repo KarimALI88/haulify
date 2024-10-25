@@ -10,7 +10,7 @@ import { BsCart4 } from "react-icons/bs";
 import  ItemCart from "../../../components/UserComponents/item/ItemCart";
 import axios from "axios";
 
-const Cart = () => {
+const Cart = ({setRefresh}) => {
   const [cartItems, setCartItems] = useState([]);
   const getCartItems = () => {
     axios({
@@ -39,7 +39,10 @@ const Cart = () => {
       method: "delete",
       url: `http://localhost:3000/cart/${id}`,
     })
-      .then(() => console.log("Removed from Cart"))
+      .then(() => {
+        console.log("Removed from Cart")
+        setRefresh(prevState => !prevState)
+      })
       .catch((error) => console.error("Error removing from Cart", error));
   };
 

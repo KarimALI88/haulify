@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "username": "aliahmed73",
+      "username": "aliahmed7",
       "email": "aliahmed@gmail.com",
       "password": "1234",
       "role": "user",
@@ -12,13 +12,33 @@
     },
     {
       "id": 2,
-      "username": "aliahmed73",
+      "username": "aliahmed733 ",
       "email": "aliahmed@gmail.com",
       "password": "1234",
       "role": "admin",
       "gender": "male",
       "phone": "01111111111",
       "country": "Egypt"
+    },
+    {
+      "email": "karim@haulify.eg",
+      "gender": "male",
+      "password": "12345678",
+      "country": "Chad",
+      "phone": "01061472185",
+      "username": "karim ali",
+      "role": "admin",
+      "id": 3
+    },
+    {
+      "email": "kemoooo@haulify.eg",
+      "gender": "male",
+      "password": "12345678",
+      "country": "Guyana",
+      "phone": "01061472185",
+      "username": "kemooo aliiii",
+      "role": "admin",
+      "id": 4
     }
   ],
   "products": [
@@ -40,44 +60,6 @@
       "category": "male"
     }
   ],
-  "cart": [
-    {
-      "id": 1,
-      "title": "short",
-      "description": "hello world",
-      "price": 900,
-      "offers": "30%",
-      "rate": 4,
-      "image": "https://placehold.co/300",
-      "size": [
-        "small",
-        "medium",
-        "large",
-        "x-large"
-      ],
-      "count": 5,
-      "category": "male",
-      "amount": 3,
-      "choosenSize": ""
-    }
-  ],
-  "wishlist": [
-    {
-      "id": 1,
-      "title": "short",
-      "description": "hello world",
-      "price": 900,
-      "offers": "30%",
-      "rate": 4,
-      "image": "https://placehold.co/300",
-      "size": [
-        "small",
-        "medium",
-        "large",
-        "x-large"
-      ],
-      "count": 500,
-      "category": "male"
-}
-]
+  "cart": [],
+  "wishlist": []
 }
