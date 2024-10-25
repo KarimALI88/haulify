@@ -18,6 +18,8 @@ const Sidebar = ({ products, setproductdata }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [openEcommerce, setOpenEcommerce] = useState(false);
   const [search, setSearch] = useState("");
+  const [selectedPrices, setSelectedPrices] = useState([]);
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -35,12 +37,39 @@ const Sidebar = ({ products, setproductdata }) => {
     setproductdata(filtered);
   };
 
+  const handlePriceChange = (e) => {
+    const value = e.target.value;
+    setSelectedPrices((prev) =>
+      prev.includes(value)
+        ? prev.filter((price) => price !== value)
+        : [...prev, value]
+    );
+  };
+
   const filterByCategory = (category) => {
     const filtered = products.filter(
       (product) => product.category === category
     );
     setproductdata(filtered);
   };
+
+  const filterByPrice = () => {
+    if (selectedPrices.length === 0) {
+      setproductdata(products);
+      return;
+    }
+    const filtered = products.filter((product) => {
+      return selectedPrices.some((range) => {
+        const [min, max] = range.split("-").map(Number);
+        return product.price >= min && product.price <= max;
+      });
+    });
+    setproductdata(filtered);
+  };
+
+  useEffect(() => {
+    filterByPrice();
+  }, [selectedPrices, products]);
 
   return (
     <div className="flex">
@@ -80,7 +109,6 @@ const Sidebar = ({ products, setproductdata }) => {
               <List className="p-0">
                 <ListItem onClick={() => filterByCategory("male")}>
                   <IoManSharp className="text-cyan-400" />
-
                   <button>Men</button>
                 </ListItem>
 
@@ -103,102 +131,33 @@ const Sidebar = ({ products, setproductdata }) => {
             <AccordionBody>
               <List>
                 <ListItem>
-                  <input type="checkbox" value="100-400" />
+                  <input
+                    type="checkbox"
+                    value="100-400"
+                    onChange={handlePriceChange}
+                  />
                   <label>100 - 400</label>
                 </ListItem>
                 <ListItem>
-                  <input type="checkbox" value="400-600" />
+                  <input
+                    type="checkbox"
+                    value="400-600"
+                    onChange={handlePriceChange}
+                  />
                   <label>400 - 600</label>
                 </ListItem>
                 <ListItem>
-                  <input type="checkbox" value="600-1000" />
+                  <input
+                    type="checkbox"
+                    value="600-1000"
+                    onChange={handlePriceChange}
+                  />
                   <label>600 - 1000</label>
                 </ListItem>
               </List>
             </AccordionBody>
           </Accordion>
-        </List>
-      </div>
-
-      <div className="lg:hidden z-10">
-        <button onClick={toggleDropdown} className="p-2 rounded-lg m-5">
-          <RxHamburgerMenu size={40} />
-        </button>
-        {isOpen && (
-          <div className="absolute w-[25%] mt-2 rounded-md shadow-lg bg-white">
-            <List className="text-black">
-              <div className="p-2 mb-4">
-                <Input
-                  icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-                  label="Search"
-                  value={search}
-                  onChange={handleSearch}
-                />
-              </div>
-
-              <Accordion
-                open={openEcommerce}
-                icon={
-                  <ChevronDownIcon
-                    className={`h-4 w-4 transition-transform ${
-                      openEcommerce ? "rotate-180" : ""
-                    }`}
-                  />
-                }
-              >
-                <ListItem className="p-0" onClick={handleOpenEcommerce}>
-                  <AccordionHeader className="p-3 border-b-0">
-                    <ListItemPrefix>
-                      <RxHamburgerMenu className="h-5 w-5" />
-                    </ListItemPrefix>
-                    <Typography color="black" className="mr-auto">
-                      Categories
-                    </Typography>
-                  </AccordionHeader>
-                </ListItem>
-
-                <AccordionBody className="py-1">
-                  <List className="p-0">
-                    <ListItem onClick={() => filterByCategory("male")}>
-                      <IoManSharp className="text-cyan-400" />
-                      <span> Men</span>
-                    </ListItem>
-                    <ListItem onClick={() => filterByCategory("female")}>
-                      <IoWoman className="text-pink-500" />
-                      <span> Women</span>
-                    </ListItem>
-                  </List>
-                </AccordionBody>
-              </Accordion>
-
-              <Accordion open={true}>
-                <ListItem>
-                  <AccordionHeader className="p-3 border-b-0">
-                    <Typography color="black" className="mr-auto">
-                      Price Range
-                    </Typography>
-                  </AccordionHeader>
-                </ListItem>
-                <AccordionBody>
-                  <List>
-                    <ListItem>
-                      <input type="checkbox" value="100-400" />
-                      <label>100 - 400</label>
-                    </ListItem>
-                    <ListItem>
-                      <input type="checkbox" value="400-600" />
-                      <label>400 - 600</label>
-                    </ListItem>
-                    <ListItem>
-                      <input type="checkbox" value="600-1000" />
-                      <label>600 - 1000</label>
-                    </ListItem>
-                  </List>
-                </AccordionBody>
-              </Accordion>
-            </List>
-          </div>
-        )}
+        </List> 
       </div>
     </div>
   );

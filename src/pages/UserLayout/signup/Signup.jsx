@@ -8,14 +8,17 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import imagesign from "../../../assets/signup1.png"
+import { useNavigate } from "react-router-dom";
+
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [Data, setData] = useState({
     firstName: "",
     lastName: "",
     gender: "",
     email: "",
-    confirmEmail: "",
     password: "",
     confirmPassword: "",
     location: "",
@@ -27,7 +30,6 @@ const Signup = () => {
     lastName: false,
     gender: false,
     email: false,
-    confirmEmail: false,
     password: false,
     confirmPassword: false,
     location: false,
@@ -56,7 +58,6 @@ const Signup = () => {
       !error.lastName &&
       !error.gender &&
       !error.email &&
-      !error.confirmEmail &&
       !error.password &&
       !error.confirmPassword &&
       !error.location &&
@@ -83,20 +84,11 @@ const Signup = () => {
           phoneNumber: Data.phoneNumber,
         },
       }).then(() => {
-        setData({
-          firstName: "",
-          lastName: "",
-          gender: "",
-          email: "",
-          confirmEmail: "",
-          password: "",
-          confirmPassword: "",
-          location: "",
-          phoneNumber: "",
-        });
+        navigate("/login");
       });
 
     }
+   
   };
 
   return (
