@@ -9,16 +9,15 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
-    }
-    return 'light';
+    return savedTheme ? savedTheme : 'light';
   });
   const [products, setProducts] = useState([]);
   const [productdata, setproductdata] = useState([]);
   const [isChanged, setIsChanged] = useState(false);
+  const [userInfo, setUserInfo] = useState([]);
+  const [adminInfo, setAdminInfo] = useState([]);
   const [alluser, setalluser] = useState([]);
-  const [islogin, setislogin] = useState(localStorage.cn ?true :false);
+  const [islogin, setislogin] = useState(localStorage.cn ? true : false);
   const [user, setUser] = useState(null);
 
   const getAlluser = () => {
@@ -36,14 +35,17 @@ const App = () => {
       url: `${import.meta.env.VITE_LINK_API}/users/${localStorage.cn}`,
     }).then((info) => setUser(info.data));
   };
+
   useEffect(() => {
-    if(islogin){
-    getUserDetails();
-}}, [islogin]);
+    if (islogin) {
+      getUserDetails();
+    }
+  }, [islogin]);
 
   useEffect(() => {
     getAlluser();
-  },[]);
+  }, []);
+
   const getproducts = () => {
     axios({
       method: "get",
@@ -54,9 +56,32 @@ const App = () => {
     });
   };
 
+  const getAllUsersAndAdmins = (role) => {
+    axios({
+      method: "get",
+      url: `${import.meta.env.VITE_LINK_API}/users`,
+    }).then((data) => {
+      const filteredList = data.data
+        .filter((user) => user.role === role)
+        .map((user) => user);
+
+      if (role === "admin") {
+        setAdminInfo(filteredList);
+      } else if (role === "user") {
+        setUserInfo(filteredList);
+      }
+    });
+  };
+
   useEffect(() => {
     getproducts();
   }, [isChanged]);
+
+  useEffect(() => {
+    getAllUsersAndAdmins("user");
+    getAllUsersAndAdmins("admin");
+  }, []);
+
   useEffect(() => {
     localStorage.theme = theme;
     if (
@@ -97,6 +122,8 @@ const App = () => {
               productdata={productdata}
               setproductdata={setproductdata}
               setIsChanged={setIsChanged}
+              userInfo={userInfo}
+              adminInfo={adminInfo}
             />
           }
         />

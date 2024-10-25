@@ -9,16 +9,6 @@
       "gender": "male",
       "phone": "01111111111",
       "country": "Egypt"
-    },
-    {
-      "id": 2,
-      "username": "aliahmed73",
-      "email": "aliahmed@gmail.com",
-      "password": "1234",
-      "role": "admin",
-      "gender": "male",
-      "phone": "01111111111",
-      "country": "Egypt"
     }
   ],
   "products": [
@@ -58,7 +48,7 @@
       "count": 5,
       "category": "male",
       "amount": 3,
-      "choosenSize": ""
+      "choosenSize": "large"
     }
   ],
   "wishlist": [
@@ -78,6 +68,6 @@
       ],
       "count": 500,
       "category": "male"
-}
-]
+    }
+  ]
 }

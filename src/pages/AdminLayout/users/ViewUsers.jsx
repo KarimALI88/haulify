@@ -8,21 +8,7 @@ import { FaSearch } from "react-icons/fa";
 import { CiLogin } from "react-icons/ci";
 import Swal from "sweetalert2";
 
-const ViewUsers = () => {
-  const [userInfo, setUserInfo] = useState([]);
-  const getAllUsers = () => {
-    axios({
-      method: "get",
-      url: "http://localhost:3000/users",
-    }).then((data) => {
-      const userList = data.data
-        .filter((user) => user.role === "user")
-        .map((user) => user);
-      setUserInfo(userList);
-    });
-  };
-
-  // _____________________________________________________________________
+const ViewUsers = ({userInfo}) => {
 
   const deleteUser = (id) => {
     Swal.fire({
@@ -68,12 +54,6 @@ const ViewUsers = () => {
     setSearchInput(inputValue);
     searchUser(inputValue);
   };
-
-  // _____________________________________________________________________
-
-  useEffect(() => {
-    getAllUsers();
-  });
 
   // _____________________________________________________________________
 

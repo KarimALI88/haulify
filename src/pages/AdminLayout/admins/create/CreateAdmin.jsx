@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useCountries } from "use-react-countries";
 
-const CreateAdmin = () => {
+const CreateAdmin = ({adminInfo}) => {
   const { countries } = useCountries();
   const [checkAdminFirstName, setCheckAdminFirstName] = useState(false);
   const [checkAdminLastName, setCheckAdminLastName] = useState(false);
@@ -59,7 +59,8 @@ const CreateAdmin = () => {
     else if (admin.lastname == "") {
       reset();
       check(setCheckAdminLastName);
-    } else if (!admin.email.includes("@haulify.eg")) {
+    } else if (!admin.email.includes("@haulify.eg") ||
+      adminInfo.some((existingAdmin) => existingAdmin.email === admin.email)) {
       reset();
       check(setCheckEmail);
     } else if (admin.gender.checked == false) {

@@ -7,20 +7,7 @@ import { CiLogin } from "react-icons/ci";
 import { MdDeleteForever, MdOutlineModeEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 
-const ViewAdmins = () => {
-  const [adminInfo, setAdminInfo] = useState([]);
-  const getAllAdmins = () => {
-    axios({
-      method: "get",
-      url: "http://localhost:3000/users",
-    }).then((data) => {
-      const adminList = data.data
-        .filter((user) => user.role === "admin")
-        .map((user) => user);
-      setAdminInfo(adminList);
-    });
-  };
-  // _____________________________________________________________________
+const ViewAdmins = ({adminInfo}) => {
 
   const deleteAdmin = (id) => {
     Swal.fire({
@@ -75,13 +62,7 @@ const ViewAdmins = () => {
     setSearchInput(inputValue);
     searchAdmin(inputValue);
   };
-
-  // _____________________________________________________________________
-
-  useEffect(() => {
-    getAllAdmins();
-  });
-
+  
   // _____________________________________________________________________
   return (
     <div className="w-full flex md:flex-col flex-col m-2">
