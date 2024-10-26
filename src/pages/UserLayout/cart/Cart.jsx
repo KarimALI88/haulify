@@ -12,12 +12,14 @@ import axios from "axios";
 
 const Cart = ({setRefresh}) => {
   const [cartItems, setCartItems] = useState([]);
+  
   const getCartItems = () => {
     axios({
       method: "get",
       url: "http://localhost:3000/cart",
     }).then((res) => setCartItems(res.data));
   };
+
   const increment = (id) => {
     let incremented = cartItems.map((item) =>
       id === item.id ? { ...item, amount: item.amount + 1 } : item

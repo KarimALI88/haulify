@@ -21,6 +21,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [cartLength, setCartLength] = useState(0)
   const [refresh, setRefresh] = useState(false)
+  const [cartProducts, setCartProducts] = useState([])
 
   const getAlluser = () => {
     axios({
@@ -37,6 +38,7 @@ const App = () => {
       url: `${import.meta.env.VITE_LINK_API}/cart`,
     }).then((info) => {
       setCartLength(info.data.length);
+      setCartProducts(info.data)
     });
   };
 
@@ -128,6 +130,7 @@ const App = () => {
               user={user}
               cartItems={cartLength}
               setRefresh={setRefresh}
+              cartProducts={cartProducts}
             />
           }
         />

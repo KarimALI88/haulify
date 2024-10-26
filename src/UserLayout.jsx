@@ -24,7 +24,7 @@ const UserLayout = ({
   islogin,
   user,
   cartItems,
-  setRefresh
+  setRefresh, cartProducts
 }) => {
   return (
     <div className="dark:bg-darkMode">
@@ -42,14 +42,14 @@ const UserLayout = ({
             />
           }
         />
-        <Route path="/products/:id" element={<SingleProduct products={products} setRefresh={setRefresh}/>} />
+        <Route path="/products/:id" element={<SingleProduct products={products} setRefresh={setRefresh} cartProducts={cartProducts}/>} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route
           path="/login"
           element={<Login alluser={alluser} setislogin={setislogin} />}
         />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/cart" element={<Cart setRefresh={setRefresh}/>} />
+        <Route path="/cart" element={<Cart setRefresh={setRefresh} />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/*" element={<NotFound />} />

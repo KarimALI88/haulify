@@ -8,7 +8,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from 'react-toastify'
 
-const SingleProduct = ({setRefresh, products}) => {
+const SingleProduct = ({setRefresh, products, cartProducts}) => {
   const [product, setProduct] = useState({
     title: "One Life Graphic T-shirt",
     description:
@@ -52,6 +52,7 @@ const SingleProduct = ({setRefresh, products}) => {
         "https://img.freepik.com/free-photo/pair-trainers_144627-3800.jpg?ga=GA1.1.421455853.1676884464&semt=ais_hybrid",
     },
   ]);
+  const [found, setFound] = useState(false)
   const { id } = useParams();
   const [numOfItem, setNumOfItem] = useState(1);
   const [productSize, setProductSize] = useState("");
@@ -98,7 +99,7 @@ const SingleProduct = ({setRefresh, products}) => {
         setRefresh(prevState => !prevState)
         toast.success("added successfully")
         navigate("/cart")
-      }).catch(toast.error("added before"))
+      }).catch(error => console.log("error",error))
     } catch (error) {
       console.error("error fetch api", error)
     }
@@ -107,6 +108,13 @@ const SingleProduct = ({setRefresh, products}) => {
   useEffect(() => {
     fetchProduct();
   }, []);
+
+  useEffect(() => {
+    const isFound = cartProducts.some((prod) => prod.id === product.id);
+    setFound(isFound);
+  }, [cartProducts, product.id]);
+
+  // console.log(found)
 
   return (
     <div className="my-16 ">
@@ -148,16 +156,16 @@ const SingleProduct = ({setRefresh, products}) => {
             </h3>
             <div className="flex flex-wrap gap-10">
               {product?.size?.map((prod, index) => (
-                <span onClick={() => setProductSize(prod)} key={index} className={`px-4 py-2 ${prod === productSize ? "bg-black text-white" : "bg-[#F0F0F0]"} shadow-sm rounded-md cursor-pointer capitalize`}>
+                <button disabled={found} onClick={() => setProductSize(prod)} key={index} className={`px-4 py-2 ${prod === productSize ? "bg-black text-white" : "bg-[#F0F0F0]"} shadow-sm rounded-md cursor-pointer capitalize`}>
                   {prod}
-                </span>
+                </button>
               ))}
             </div>
           </div>
           <hr />
           <div className="flex flex-wrap gap-10 my-5 items-center">
             <div className="flex gap-5 bg-[#F0F0F0] rounded-full px-5 py-2 cursor-pointer">
-              <button className="text-xl font-[500]" onClick={increment} disabled={numOfItem === product.count}>
+              <button className="text-xl font-[500]" onClick={increment} disabled={numOfItem === product.count || found}>
                 +
               </button>
               <button className="text-xl font-[500]">{numOfItem}</button>
@@ -170,9 +178,9 @@ const SingleProduct = ({setRefresh, products}) => {
               </button>
             </div>
             <div>
-              {productSize.length === 0 && <p className="text-lg font-medium">you must choose size</p>}
-              <Button onClick={addToCart} disabled={productSize.length === 0} className="rounded-full w-[300px] bg-mainColor justify-center text-black font-[500] text-lg flex items-center gap-5">
-                <IoIosCart color="black" size={30} /> Add To Cart
+              {productSize.length === 0 && found === false && <p className="text-lg font-medium">you must choose size</p>}
+              <Button onClick={addToCart} disabled={productSize.length === 0 || found} className="rounded-full w-[300px] bg-mainColor justify-center text-black font-[500] text-lg flex items-center gap-5">
+                <IoIosCart color="black" size={30} /> {found ? "Added before" : "Add to cart"}
               </Button>
             </div>
           </div>
