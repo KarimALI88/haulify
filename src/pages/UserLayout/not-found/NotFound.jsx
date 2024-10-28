@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 const NotFound = () => {
     return (
         <div className="h-[100vh] bg-[#f3f1f0] p-14 flex flex-col gap-10">
@@ -19,7 +20,9 @@ const NotFound = () => {
                         The page you are looking for might be removed or is
                         temporarily unavailable
                     </p>
-                    <Button className="p-3 w-32 text-[1.1rem]">Home</Button>
+                    <Link to="/">
+                        <Button className="p-3 w-32 text-[1.1rem]">Home</Button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -48,19 +48,6 @@ const Cart = ({setRefresh}) => {
       .catch((error) => console.error("Error removing from Cart", error));
   };
 
-  const addToCart = (id) => {
-    let targetProduct = cartItems.find((product) => id === product.id);
-    if (targetProduct) {
-      setCartItems([...cartItems, targetProduct]);
-      axios({
-        method: "post",
-        url: `http://localhost:3000/cart`,
-        data: targetProduct,
-      })
-        .then(() => console.log("Added to Cart"))
-        .catch((error) => console.log("Error Adding to cart", error));
-    }
-  };
   useEffect(() => {
     getCartItems();
   }, []);

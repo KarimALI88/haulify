@@ -2,7 +2,7 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 
 const ItemCart = ({
-  item: { id, title, description, price, amount, image },
+  item: { id, title, description, price, amount, image, choosenSize },
   increment,
   decrement,
   remov,
@@ -24,6 +24,9 @@ const ItemCart = ({
           </h5>
           <p className="font-normal text-lg leading-8 text-gray-500 my-2 min-[550px]:my-3 max-[550px]:text-center">
             {description}
+          </p>
+          <p className="font-normal text-lg leading-8 text-black my-2 min-[550px]:my-3 max-[550px]:text-center">
+            Size: <span className="text-mainColor">{choosenSize}</span>
           </p>
           <h6 className="font-medium text-lg leading-8 text-indigo-600 max-[550px]:text-center">
             ${price}

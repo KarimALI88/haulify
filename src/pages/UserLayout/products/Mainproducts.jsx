@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import Products from "./Products";
 import Sidebar from "../../../components/UserComponents/sidebar/Sidebar";
 
-const Mainproducts = ({products,setproductdata,productdata}) => {
-  const [wishlistProducts, setWishlistProducts] = useState([]);
+const Mainproducts = ({products,setproductdata,productdata,wishlistProducts, setWishlistProducts}) => {
 
   const isProductWishlisted = (id) => {
     return wishlistProducts.some((product) => product.id === id);
@@ -42,20 +41,6 @@ const Mainproducts = ({products,setproductdata,productdata}) => {
       url: `http://localhost:3000/wishlist/${id}`
     }).then(() => console.log("Removed from wishlist")).catch((error) => console.error("Error Removing from wishlist", error));
   };
-
-
-  const getWishlistProducts = () => {
-    axios({
-      method: "get",
-      url: `http://localhost:3000/wishlist`,
-    }).then((info) => {
-      setWishlistProducts(info.data);
-    });
-  };
-
-  useEffect(() => {
-    getWishlistProducts();
-  }, []);
 
   return (
     <div className="flex">

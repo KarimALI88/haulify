@@ -5,6 +5,7 @@ import AdminLayout from "./AdminLayout";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NotFound from "./pages/UserLayout/not-found/NotFound";
 
 const App = () => {
   const [theme, setTheme] = useState(() => {
@@ -22,6 +23,8 @@ const App = () => {
   const [cartLength, setCartLength] = useState(0)
   const [refresh, setRefresh] = useState(false)
   const [cartProducts, setCartProducts] = useState([])
+  const [wishlistProducts, setWishlistProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getAlluser = () => {
     axios({
@@ -99,6 +102,22 @@ const App = () => {
     getAllUsersAndAdmins("admin");
   }, [refresh]);
 
+  const getWishlistProducts = () => {
+    axios({
+      method: "get",
+      url: `http://localhost:3000/wishlist`,
+    }).then((info) => {
+      setWishlistProducts(info.data);
+      setLoading(false);
+      console.log(wishlistProducts);
+      
+    });
+  };
+
+  useEffect(() => {
+    getWishlistProducts();
+  }, []);
+
   useEffect(() => {
     localStorage.theme = theme;
     if (
@@ -131,12 +150,15 @@ const App = () => {
               cartItems={cartLength}
               setRefresh={setRefresh}
               cartProducts={cartProducts}
+              wishlistProducts={wishlistProducts}
+              setWishlistProducts={setWishlistProducts}
+              loading={loading}
             />
           }
         />
         <Route
           path="/admin/*"
-          element={
+          element={islogin ?
             <AdminLayout
               products={products}
               productdata={productdata}
@@ -147,6 +169,8 @@ const App = () => {
               setRefresh={setRefresh}
               setislogin={setislogin}
             />
+            :
+            <NotFound />
           }
         />
       </Routes>

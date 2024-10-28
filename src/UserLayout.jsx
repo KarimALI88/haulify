@@ -24,11 +24,23 @@ const UserLayout = ({
   islogin,
   user,
   cartItems,
-  setRefresh, cartProducts
+  setRefresh,
+  cartProducts,
+  wishlistProducts,
+  setWishlistProducts,
+  loading,
 }) => {
   return (
     <div className="dark:bg-darkMode">
-      <Header setRefresh={setRefresh} theme={theme} setTheme={setTheme} islogin={islogin} setislogin={setislogin} user={user} cartItems={cartItems}/>
+      <Header
+        setRefresh={setRefresh}
+        theme={theme}
+        setTheme={setTheme}
+        islogin={islogin}
+        setislogin={setislogin}
+        user={user}
+        cartItems={cartItems}
+      />
       {/* ====================================================== */}
       <Routes>
         <Route path="/" element={<Home products={products} />} />
@@ -39,18 +51,44 @@ const UserLayout = ({
               products={products}
               productdata={productdata}
               setproductdata={setproductdata}
+              wishlistProducts={wishlistProducts}
+              setWishlistProducts={setWishlistProducts}
             />
           }
         />
-        <Route path="/products/:id" element={<SingleProduct products={products} setRefresh={setRefresh} cartProducts={cartProducts}/>} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route
+          path="/products/:id"
+          element={
+            <SingleProduct
+              products={products}
+              setRefresh={setRefresh}
+              cartProducts={cartProducts}
+            />
+          }
+        />
+        <Route
+          path="/profile/:id"
+          element={islogin ? <Profile /> : <NotFound />}
+        />
         <Route
           path="/login"
           element={<Login alluser={alluser} setislogin={setislogin} />}
         />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/cart" element={<Cart setRefresh={setRefresh} />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route
+          path="/cart"
+          element={islogin ? <Cart setRefresh={setRefresh} /> : <NotFound />}
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <Wishlist
+              wishlistProducts={wishlistProducts}
+              setWishlistProducts={setWishlistProducts}
+              loading={loading}
+            />
+          }
+        />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

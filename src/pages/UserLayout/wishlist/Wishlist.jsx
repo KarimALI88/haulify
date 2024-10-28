@@ -6,9 +6,7 @@ import Products from "../products/Products";
 import axios from "axios";
 import { Spinner } from "@material-tailwind/react";
 
-const Wishlist = () => {
-  const [wishlistProducts, setWishlistProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+const Wishlist = ({wishlistProducts, setWishlistProducts, loading}) => {
 
   const isProductWishlisted = (id) => {
     return wishlistProducts.some((product) => id === product.id);
@@ -34,20 +32,6 @@ const Wishlist = () => {
       .then(() => console.log("Removed from wishlist"))
       .catch((error) => console.error("Error Removing from wishlist", error));
   };
-
-  const getWishlistProducts = () => {
-    axios({
-      method: "get",
-      url: `http://localhost:3000/wishlist`,
-    }).then((info) => {
-      setWishlistProducts(info.data);
-      setLoading(false);
-    });
-  };
-
-  useEffect(() => {
-    getWishlistProducts();
-  }, []);
 
   return (
     <div className="py-8 min-h-[100vh]">
