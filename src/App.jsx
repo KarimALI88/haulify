@@ -145,6 +145,7 @@ const App = () => {
               userInfo={userInfo}
               adminInfo={adminInfo}
               setRefresh={setRefresh}
+              setislogin={setislogin}
             />
           }
         />

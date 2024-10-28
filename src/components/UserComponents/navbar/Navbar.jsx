@@ -74,19 +74,41 @@ const Header = ({ theme, setTheme, islogin, setislogin, user, cartItems }) => {
           />
         )}
       </Typography>
-      <Typography as={Link} to="/cart" variant="small" color="blue-gray" className="p-1 font-normal relative">
-        <span className="bg-mainColor text-white p-1 rounded-full font-medium absolute bottom-4 right-0">
-          {cartItems}
-        </span>
-        <IoIosCart size={25} className="rounded-md hover:text-mainColor text-[#0B192C] dark:text-[white]" />
-      </Typography>
-      <Typography as={Link} to="/wishlist" color="blue-gray" className="p-1 font-normal">
-        <FaRegHeart size={25} className="rounded-md hover:text-mainColor text-[#0B192C] dark:text-[white]" />
+      {islogin && (
+        <Typography
+          as={Link}
+          to="/cart"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal relative"
+        >
+          <span className="bg-mainColor text-white p-1 rounded-full font-medium absolute bottom-4 right-0">
+            {cartItems}
+          </span>
+          <IoIosCart
+            size={25}
+            className="rounded-md hover:text-mainColor text-[#0B192C] dark:text-[white]"
+          />
+        </Typography>
+      )}
+      <Typography
+        as={Link}
+        to="/wishlist"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <FaRegHeart
+          size={25}
+          className="rounded-md hover:text-mainColor text-[#0B192C] dark:text-[white]"
+        />
       </Typography>
       {islogin ? (
         <Userprofile islogin={islogin} setislogin={setislogin} user={user} />
       ) : (
-        <Button size="lg" className="hidden lg:inline-block bg-mainColor text-black font-[600]">
+        <Button
+          size="lg"
+          className="hidden lg:inline-block bg-mainColor text-black font-[600]"
+        >
           <Link to="/login">Sign in</Link>
         </Button>
       )}
@@ -97,7 +119,11 @@ const Header = ({ theme, setTheme, islogin, setislogin, user, cartItems }) => {
     <div className="max-h-[768px] max-w-full">
       <Navbar className="sticky top-0 z-10 h-max py-5 max-w-full rounded-none dark:bg-darkMode border-b border-t-0 border-r-0 border-l-0 border-b-[#adadad] shadow-none">
         <div className="flex items-center justify-between text-blue-gray-900">
-          <Typography as={Link} to="/" className="mr-4 cursor-pointer h-[60px] mb-3">
+          <Typography
+            as={Link}
+            to="/"
+            className="mr-4 cursor-pointer h-[60px] mb-3"
+          >
             <img src={logo} alt="logo" className="mt-[-10px] block" />
           </Typography>
           <div className="mx-auto hidden lg:block">{navList}</div>
@@ -108,21 +134,40 @@ const Header = ({ theme, setTheme, islogin, setislogin, user, cartItems }) => {
             onClick={() => setOpenNav(!openNav)}
           >
             {openNav ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                className="h-6 w-6"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </IconButton>
         </div>
         <Collapse open={openNav}>
           {navList}
-          <div className="flex items-center gap-4 mt-4">
-            {actionButtons}
-          </div>
+          <div className="flex items-center gap-4 mt-4">{actionButtons}</div>
         </Collapse>
       </Navbar>
     </div>

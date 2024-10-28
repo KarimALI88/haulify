@@ -18,12 +18,13 @@ const AdminLayout = ({
   setIsChanged,
   userInfo,
   adminInfo,
-  setRefresh
+  setRefresh, 
+  setislogin
 }) => {
   return (
     <div className="bg-[#EDEEF2] flex flex-col md:flex-row w-full justify-between">
       <div className="w-full md:w-1/4">
-        <AdminSideBar />
+        <AdminSideBar setislogin={setislogin}/>
       </div>
       <Routes>
         <Route

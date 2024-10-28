@@ -66,7 +66,7 @@ const Login = ({ alluser, setislogin }) => {
   };
 
   return (
-    <section className="grid text-center h-screen items-center p-8 dark:bg-gray-900">
+    <section className="grid text-center h-screen items-center p-8 dark:bg-gray-900 mb-20">
       <div className="w-full md:w-2/3 lg:w-1/2 mx-auto px-8">
         <Typography
           variant="h3"

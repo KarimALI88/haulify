@@ -55,14 +55,14 @@ const AdminSidebar = () => {
               Products
             </ListItem>
           </Typography>
-          <Typography as={Link} to="/admin/users">
+          {/*<Typography as={Link} to="/admin/users">
             <ListItem>
               <ListItemPrefix>
                 <UserCircleIcon className="h-5 w-5 " />
               </ListItemPrefix>
               Profile
             </ListItem>
-          </Typography>
+          </Typography>*/}
           <Typography as={Link} to="/admin/users">
             <ListItem>
               <ListItemPrefix>

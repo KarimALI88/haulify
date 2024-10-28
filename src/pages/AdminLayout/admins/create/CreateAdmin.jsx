@@ -61,13 +61,13 @@ const CreateAdmin = ({ adminInfo, setRefresh }) => {
       check(setCheckAdminLastName);
       toast.error("last name required");
     } else if (
-      !admin.email.includes("@haulify.eg") ||
+      !admin.email.includes("@") ||
       adminInfo.some((existingAdmin) => existingAdmin.email === admin.email)
     ) {
       reset();
       check(setCheckEmail);
       toast.error(
-        "email must contain @haulify.eg and must didn't enrolled before"
+        "email must contain @ and must didn't enrolled before"
       );
     } else if (admin.gender.checked == false) {
       reset();
